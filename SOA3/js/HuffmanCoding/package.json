@@ -1,0 +1,11 @@
+{
+  "name": "huffmancoding",
+  "version": "1.0.0",
+  "description": "To implement huffman coding techinique in text compression",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arjith",
+  "license": "ISC"
+}
