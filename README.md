@@ -2,7 +2,8 @@
 This repository contains basic api created using Python, Node.js and PHP
 
 # Directory Structure
----SOA1/
+---SOA1
+    |
     ---js
     ---PHP
     ---Python
