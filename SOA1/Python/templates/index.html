@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOAlab 1</title>
+    <style>
+       body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+  text-align: center;
+}
+        input[type=text] {
+            width: 80%;
+            padding: 12px 18px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+         input[type=number] {
+            width: 80%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=submit] {
+            width: 50%;
+            background-color: #00b359;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+        input[type=submit]:hover {
+            background-color: #00994d;
+        }
+        h2 {
+            text-align: center;
+            }
+             .split {
+              height: 80%;
+              width: 50%;
+              position: fixed;
+              z-index: 1;
+              top: 10%;
+              overflow-x: hidden;
+              padding-top: 30px;
+              border-style: solid;
+  border-color: GREY;
+            }
+            .left {
+              left: 0;
+<!--              background-color: #111;-->
+            }
+            .right {
+              right: 0;
+<!--              background-color: red;-->
+            }
+    .texts{
+    padding-left: 40px;
+    }
+    </style>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+<h2> <u>SOA lab-1</u></h2>
+<br>
+<br>
+<div class="split left">
+<div class="texts">
+<br><br>i. Calculate the difference between two dates. (Display the output in No. of Year, No. of Month, No. of Day, No. of Hour, No. of  Minute, No. of Seconds)
+<br><br>ii. Perform Set theory operations such as Union, Minus, Intersection for the group of data.
+<br><br>iii. Perform matrix operations like Transpose, Lower Diagonal (Left & Right), Upper Diagonal (Left & Right) and Swivel. <br><br>iv. Convert the figure into words in currency.
+<br><br>v. Implement the RSA algorithm for encryption and decryption.
+<br><br>vi. Generate the checksum value for the given sentence using md5 algorithm.
+<br><br>vii. Generate 128-bit bar code for alphanumeric data.
+<br><br>viii. Generate QR code for alphanumeric data.
+<br><br>ix. Generate a one-time password (OTP) in numbers, alphabet and alphanumeric (Note: OTP Size should be varied.) <br><br>x. Generate a Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) for the given string.
+</div>
+</div>
+<div class="split right">
+    <div class="texts">
+  <form action="/ftw" method="POST">
+    <input type="hidden" value="figure to word">
+   <input type="submit" value="Figure to Word">
+</form>
+        <form action="/otps" method="POST">
+    <input type="hidden" value="Generate Otp">
+   <input type="submit" value="Generate OTP">
+</form>
+        <form action="/ddf" method="POST">
+    <input type="hidden" value="date difference">
+   <input type="submit" value="Date Difference">
+</form>
+        <form action="/sops" method="POST">
+    <input type="hidden" value="setoperations">
+   <input type="submit" value="Set Operation">
+</form>
+        <form action="/matops" method="POST">
+    <input type="hidden" value="matrixoperations">
+   <input type="submit" value="Matrix">
+</form>
+        <form action="/rsaops" method="POST">
+    <input type="hidden" value="rsaoperations">
+   <input type="submit" value="RSA">
+</form>
+        <form action="/mdhash" method="POST">
+    <input type="hidden" value="MDCHECKSUM">
+   <input type="submit" value="MD5 - Checksum">
+</form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Date Difference | SOA lab-1</title>
+    <style>
+      body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+  text-align: center;
+}
+        input[type=text] {
+            width: 80%;
+            padding: 12px 18px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+         input[type=number] {
+            width: 80%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=submit] {
+            width: 50%;
+            background-color: #00b359;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+        input[type=submit]:hover {
+            background-color: #00994d;
+        }
+        h2 {
+            text-align: center;
+            }
+             .split {
+              height: 80%;
+              width: 50%;
+              position: fixed;
+              z-index: 1;
+              top: 10%;
+              overflow-x: hidden;
+              padding-top: 30px;
+              border-style: solid;
+  border-color: GREY;
+            }
+            .left {
+              left: 0;
+<!--              background-color: #111;-->
+            }
+            .right {
+              right: 0;
+<!--              background-color: red;-->
+            }
+    .texts{
+    padding-left: 40px;
+    }
+    </style>
+</head>
+<body>
+<h2> <u>Date Difference</u></h2>
+<br>
+<br>
+<div class="split left">
+<div class="texts">
+1) Calculate the difference between two dates. (Display the output in No. of Year, No. of Month, No. of Day, No. of Hour, No. of  Minute, No. of Seconds)
+<br><br>
+    <form action="/">
+   <input type="submit" value="Back">
+</form>
+</div>
+</div>
+<div class="split right">
+    <div class="texts">
+  <form name="otppassdata" action="/datediff" method="POST">
+    <label>Select the From date and time :</label><br>
+    <input type="date" name="da1" required>
+      <input type="time" id="t1" name="t1" step="1"required><br><br>
+      <label>Select the To date and time :</label><br>
+    <input type="date" name="da2" required>
+      <input type="time" id="t2" name="t2" step="1" required><br><br>
+    <input type="submit" value="Find difference">
+</form>
+        <br><br>
+<!--       Number :  {{number}}<br><br>-->
+        From date : {{fdate}}<br><br>
+        To date : {{tdate}}<br><br>
+        Result :
+        {{res}}<br><br>
+    </div>
+</div>
+</body>
+</html>
