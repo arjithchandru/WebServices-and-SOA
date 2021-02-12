@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trigonomentry | SOA lab-2</title>
+
+    <style>
+           body {
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+  text-align: center;
+}
+
+
+        input[type=text] {
+            width: 80%;
+            padding: 12px 18px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+         input[type=number] {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 20%;
+            background-color: #00b359;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #00994d;
+        }
+        h2 {
+            text-align: center;
+            }
+
+             .split {
+              height: 80%;
+              width: 50%;
+              position: fixed;
+              z-index: 1;
+              top: 10%;
+              overflow-x: hidden;
+              padding-top: 30px;
+              border-style: solid;
+  border-color: GREY;
+            }
+
+            .left {
+              left: 0;
+<!--              background-color: #111;-->
+
+            }
+
+            .right {
+              right: 0;
+<!--              background-color: red;-->
+            }
+    .texts{
+    padding-left: 40px;
+    }
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 12px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    </style>
+
+
+</head>
+<body>
+<h2> <u>Trigonomentry</u></h2>
+<br>
+<br>
+<div class="split left">
+<div class="texts">
+    4) Design an Math-Log3 Calculator :<br>To find Sin, Cos, Tan, Sec, Cosec, Cot.
+    <br>
+    <br>
+
+    <u>Input</u><br><br>
+    Enter degree : 60<br><br>
+
+        <br><u>Output</u><br><br>
+Sin : 0.8660099611064449<br><br>
+
+Cos : 0.5000267465490361<br><br>
+
+Tan : 1.7319272760572577<br><br>
+
+Cot : 0.5773914492971701<br><br>
+    Sec : 1.9998930195265725<br><br>
+    Cosec : 1.1547211289837414<br><br>
+    <label> <u>Arc of sin, cos, tan</u></label><br><br>
+    input : 1<br><br>
+    operation : arc sin<br><br>
+X : 1.0<br><br>
+Y (in degree) : 90.0<br>
+
+    <form action="/">
+   <input type="submit" value="Back">
+</form>
+
+</div>
+</div>
+
+<div class="split right">
+    <div class="texts">
+<form name="trignometryotoperation" action="/mathlog3" method="POST">
+    <label>Enter degree</label>
+    <input type="number" name="tdegree" required>
+<!--    <input type="number" name="ntimes">-->
+    <input type="hidden" name="mathlog3list" value="alllist">
+    <input type="submit" value="Calculate">
+</form>
+    <br><br>
+        Degree : {{degree}}<br><br>
+        <table>
+  <tr>
+    <th>Sin</th>
+    <th>Cos</th>
+    <th>Tan</th>
+
+  </tr>
+  <tr>
+    <td>{{sin}}</td>
+    <td>{{cos}}</td>
+    <td>{{tan}}</td>
+
+  </tr>
+        </table>
+<br><br>
+         <table>
+  <tr>
+
+      <th>Sec</th>
+      <th>Cosec</th>
+      <th>Cot</th>
+  </tr>
+  <tr>
+
+      <td>{{sec}}</td>
+      <td>{{cosec}}</td>
+      <td>{{cot}}</td>
+  </tr>
+        </table>
+<!--<br>-->
+
+<!--Sin    : {{sin}} <br><br>-->
+<!--Cos    : {{cos}} <br><br>-->
+<!--Tan    : {{tan}} <br><br>-->
+<!--Cot    : {{cot}} <br><br>-->
+<!--Sec    : {{sec}} <br><br>-->
+<!--Cosec  : {{cosec}} <br><br>--><br>
+        <h4><u>Arc of sin,cos, tan</u></h4>
+     <form name="inversetrignometryotoperation" action="/invmathlog3" method="POST">
+ <select name="opChoice" id="opChoice">
+                <option id="arcsin" value="0" selected='true'>arc-sin</option>
+                <option id="arccos" value="1">arc-cos</option>
+                <option id="arctan" value="2"> arc tan </option>
+            </select>
+         <label> (x) , −1 ≤ x ≤ 1 </label>
+       <input type="text" name="xaxis" required>
+         <input type="submit" value="Calculate"><br>
+         operation : {{val}}<br>
+         X : {{x}}<br>
+         Y (in degree)   : {{y}} <br><br>
+      </form>
+<br>
+    </div>
+</div>
+</body>
+</html>

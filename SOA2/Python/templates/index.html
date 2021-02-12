@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOA lab 2</title>
+<style>
+      body {
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+  text-align: center;
+}
+
+
+        input[type=text] {
+            width: 80%;
+            padding: 12px 18px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+         input[type=number] {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 70%;
+            background-color: #00b359;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #00994d;
+        }
+        h2 {
+            text-align: center;
+            }
+
+             .split {
+              height: 80%;
+              width: 50%;
+              position: fixed;
+              z-index: 1;
+              top: 10%;
+              overflow-x: hidden;
+              padding-top: 30px;
+              border-style: solid;
+  border-color: GREY;
+            }
+
+            .left {
+              left: 0;
+<!--              background-color: #111;-->
+
+            }
+
+            .right {
+              right: 0;
+<!--              background-color: red;-->
+            }
+    .texts{
+    padding-left: 40px;
+    }
+    </style>
+
+
+</head>
+<body>
+<h2> <u>SOA lab-2</u></h2>
+<br>
+<br>
+<div class="split left">
+<div class="texts">
+    i. Design an Electrical Calculator (Amps, kW, kVA,VA,volts,watts,joules,kW, mAh,Wh) <br><br>
+ii. Design an Math-Log1 Calculator (Logarithm(log), Natural Logarithm (ln), Anti-logarithm) <br><br>
+iii. Design an Math-Log2 Calculator (GCF,LCM, Squre-root, Cube-root and Nth-root ) <br><br>
+iv. Design an Math-Log3 Calculator (Trigonometry – Sin, Cos, Tan, Arcsin, Arccos, Arctan, Sec, Cosec, Cot)<br><br>
+ v. Design an Basic Statistics Calculator (Standard Deviation, Variance, Linear Regression)<br><br>
+
+
+
+</div>
+</div>
+
+
+
+<div class="split right">
+    <div class="texts">
+
+  <form action="/electronics" method="POST">
+    <input type="hidden" value="E-calculator">
+   <input type="submit" value="E-calc">
+</form>
+
+
+        <form action="/log" method="POST">
+    <input type="hidden" value="log">
+   <input type="submit" value="Logarithm">
+</form>
+
+<form action="/GLC" method="POST">
+    <input type="hidden" value="GCD & LCM">
+   <input type="submit" value="GCD & LCM">
+</form>
+
+ <form action="/rootes" method="POST">
+    <input type="hidden" value="Square root, cube root and nth root">
+   <input type="submit" value="Roots">
+</form>
+
+
+<form action="/trig" method="POST">
+    <input type="hidden" value="Trigonnomentry">
+   <input type="submit" value="Trigonomentry">
+</form>
+
+
+<form action="/stdv" method="POST">
+    <input type="hidden" value="standard deviation and variance">
+   <input type="submit" value="Standard Deviation & Variance">
+</form>
+
+
+
+
+
+
+    </div>
+</div>
+<!--<h2> <u>Find : Ampere / Watts / Volt</u> </h2>-->
+
+<!--watts <input type="radio" onclick="javascript:ampere();" name="amps" id="wattts">-->
+<!--ampere <input type="radio" onclick="javascript:ampere();" name="amps" id="ampere">-->
+<!--volt <input type="radio" onclick="javascript:ampere();" name="amps" id="volt">-->
+<!--<br>-->
+
+
+
+<!-- <div id="ifwatts" style="display:none">-->
+<!--<br>-->
+<!--     <form name="wattspass" action="/PVR" method="POST">-->
+<!--         <label>Enter the ampere :</label>-->
+<!--         <input type="text" name="ampere" required>-->
+<!--         <label>Enter the volts :</label>-->
+<!--         <input type="text" name="volts" required>-->
+<!--         <input type="hidden" name="tofind" value="watts">-->
+<!--        <input type="submit" value="Find watt">-->
+<!--    </form>-->
+<!-- </div>-->
+
+<!-- <div id="ifampere" style="display:none">-->
+<!--<br>-->
+<!--     <form name="amperepass" action="/PVR" method="POST">-->
+<!--         <label>Enter the watts :</label>-->
+<!--         <input type="text" name="watts" required>-->
+<!--         <label>Enter the volts :</label>-->
+<!--         <input type="text" name="volts" required>-->
+<!--         <input type="hidden" name="tofind" value="ampere">-->
+<!--         <input type="submit" value="Find ampere">-->
+<!--    </form>-->
+<!-- </div>-->
+
+<!-- <div id="ifvolts" style="display:none">-->
+<!--<br>-->
+<!--     <form name="voltpass" action="/PVR" method="POST">-->
+<!--         <label>Enter the watts :</label>-->
+<!--         <input type="text" name="watts" required>-->
+<!--         <label>Enter the ampere :</label>-->
+<!--         <input type="text" name="ampere" required>-->
+<!--         <input type="hidden" name="tofind" value="volts">-->
+<!--         <input type="submit" value="Find volt">-->
+<!--    </form>-->
+<!-- </div>-->
+<!--<br>-->
+<!--{{message}}-->
+<!--<br>-->
+<!--<hr>-->
+<!--<h2> <u>Conertions</u> </h2>-->
+
+<!--Amps to volt-amps(VA) <input type="radio" onclick="javascript:coverstion();" name="amps" id="amptVA">-->
+<!--volt-amps(VA) to Amps <input type="radio" onclick="javascript:coverstion();" name="amps" id="VAtamps">-->
+<!--kVA to Amps <input type="radio" onclick="javascript:coverstion();" name="amps" id="kvatamps">-->
+<!--Amps to kVA <input type="radio" onclick="javascript:coverstion();" name="amps" id="ampstkva">-->
+<!--Watts to Joules <input type="radio" onclick="javascript:coverstion();" name="amps" id="watstjul">-->
+
+
+<!--&lt;!&ndash;amps to va&ndash;&gt;-->
+<!--<div id="ampstoVA" style="display:none">-->
+<!--<br>-->
+<!--     <form name="ampstova" action="/coverstion" method="POST">-->
+<!--         <label for="tophase">Select Phase:</label>-->
+<!--            <select name="tophase" id="tophase" required>-->
+<!--              <option value="single" >Single</option>-->
+<!--              <option value="three">Three</option>-->
+<!--            </select><br><br>-->
+<!--         <label>Enter the Amper : </label>-->
+<!--         <input type="text" name="amps" required>-->
+<!--         <label>Enter the Volt : </label>-->
+<!--         <input type="text" name="volt" required>-->
+<!--         <input type="hidden" name="tofind" value="VA">-->
+<!--         <input type="submit" value="Find VA">-->
+<!--    </form>-->
+<!--    <br>-->
+<!-- </div>-->
+<!--&lt;!&ndash;va to amps&ndash;&gt;-->
+<!--<div id="VAtoamps" style="display:none">-->
+<!--<br>-->
+<!--     <form name="ampstova" action="/coverstion" method="POST">-->
+<!--         <label>Select Phase: </label>-->
+<!--            <select name="tophase" required>-->
+<!--              <option value="single" >Single</option>-->
+<!--              <option value="three">Three</option>-->
+<!--            </select><br><br>-->
+<!--         <label>Enter the VA : </label>-->
+<!--         <input type="text" name="va" required>-->
+<!--         <label>Enter the Volt : </label>-->
+<!--         <input type="text" name="volt" required>-->
+<!--         <input type="hidden" name="tofind" value="Amps">-->
+<!--         <input type="submit" value="Find Amps">-->
+<!--    </form>-->
+<!--    <br>-->
+<!-- </div>-->
+
+<!--&lt;!&ndash;kva to amps&ndash;&gt;-->
+<!--<div id="kvatoamps" style="display:none">-->
+<!--<br>-->
+<!--     <form name="kvatamps" action="/coverstion" method="POST">-->
+<!--         <label>Select Phase: </label>-->
+<!--            <select name="tophase" required>-->
+<!--              <option value="single" >Single</option>-->
+<!--              <option value="three">Three</option>-->
+<!--            </select><br><br>-->
+<!--         <label>Enter the kVA : </label>-->
+<!--         <input type="text" name="kva" required>-->
+<!--         <label>Enter the Volt : </label>-->
+<!--         <input type="text" name="volt" required>-->
+<!--         <input type="hidden" name="tofind" value="kvaAmps">-->
+<!--         <input type="submit" value="Find Amps">-->
+<!--    </form>-->
+<!--    <br>-->
+<!-- </div>-->
+
+<!--&lt;!&ndash;amps to kva&ndash;&gt;-->
+<!--<div id="ampstokva" style="display:none">-->
+<!--<br>-->
+<!--     <form name="ampstokva" action="/coverstion" method="POST">-->
+<!--         <label>Select Phase: </label>-->
+<!--            <select name="tophase" required>-->
+<!--              <option value="single" >Single</option>-->
+<!--              <option value="three">Three</option>-->
+<!--            </select><br><br>-->
+<!--         <label>Enter the Ampere : </label>-->
+<!--         <input type="text" name="amps" required>-->
+<!--         <label>Enter the Volt : </label>-->
+<!--         <input type="text" name="volt" required>-->
+<!--         <input type="hidden" name="tofind" value="Ampskva">-->
+<!--         <input type="submit" value="Find Amps">-->
+<!--    </form>-->
+<!--    <br>-->
+<!-- </div>-->
+
+
+<!--&lt;!&ndash;watts to joule&ndash;&gt;-->
+
+<!--<div id="wattojoule" style="display:none">-->
+<!--<br>-->
+<!--     <form name="wattosjoule" action="/coverstion" method="POST">-->
+<!--         <label>Select Phase: </label>-->
+<!--            <select name="tophase" required>-->
+<!--              <option value="none" >none</option>-->
+<!--&lt;!&ndash;              <option value="three">Three</option>&ndash;&gt;-->
+<!--            </select><br><br>-->
+<!--         <label>Enter the watts : </label>-->
+<!--         <input type="text" name="jwatts" required>-->
+<!--         <label>Enter the seconds : </label>-->
+<!--         <input type="text" name="jsec" required>-->
+<!--         <input type="hidden" name="tofind" value="WatJule">-->
+<!--         <input type="submit" value="Find Joule">-->
+<!--    </form>-->
+<!--    <br>-->
+<!-- </div>-->
+
+<!--<br>-->
+<!--<br>-->
+<!--{{coutput}}-->
+<!--<br>-->
+<!--<hr>-->
+<!--<hr>-->
+<!--<br>-->
+<!--<h2> <u>Standard Deviation, Variance</u></h2>-->
+<!--<br>-->
+<!--<br>-->
+<!--<form name="staticcals" action="/staticcalc" method="POST">-->
+<!--    <input type="text" name="lists">-->
+<!--    <input type="submit" value="Calculate">-->
+<!--</form>-->
+<!--    <br>-->
+<!--Array : {{arrayentd}}-->
+<!--<br>-->
+<!--standard deviation : {{sd}}-->
+<!--<br>-->
+<!--variance : {{var}}-->
+
+<!--<hr>-->
+<!--<hr>-->
+<!--<br>-->
+<!--<h2> <u>GCF and LCM</u></h2>-->
+<!--<br>-->
+<!--<form name="GCDoperation" action="/mathlog2" method="POST">-->
+<!--    <input type="text" name="gcdlists">-->
+<!--    <input type="hidden" name="mathlog2list" value="gcdlist">-->
+<!--    <input type="submit" value="Calculate">-->
+<!--</form>-->
+<!--    <br>-->
+
+<!--Array : {{arrayented}}-->
+<!--<br>-->
+<!--GCF : {{gcd}}-->
+<!--<br>-->
+<!--LCM  :{{lcm}}-->
+<!--<br>-->
+
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<h2> <u>LCM</u></h2>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<form name="LCMoperation" action="/mathlog2" method="POST">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="text" name="lcmnumber">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="hidden" name="mathlog2list" value="lcmlist">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="submit" value="Find LCM">&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+<!--&lt;!&ndash;    <br>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;LCM : {{lcmresult}}&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<h2> <u>Square Root</u></h2>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<form name="squarerootoperation" action="/mathlog2" method="POST">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="number" name="sqnum">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="hidden" name="mathlog2list" value="sqlist">&ndash;&gt;-->
+<!--&lt;!&ndash;    <input type="submit" value="find sqaure">&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+<!--&lt;!&ndash;    <br>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;Square Root : {{sqroot}}&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--<h2> <u>Square Root, Cube Root, Nth Root</u></h2>-->
+<!--<br>-->
+
+<!--<form name="nsquarerootoperation" action="/mathlog2" method="POST">-->
+<!--    <label>Enter number: eg(25)</label>-->
+<!--    <input type="number" name="sqnum" value="'''+gvalue+'''"><br>-->
+<!--    <label >Enter n times</label>-->
+<!--    <input type="number" name="ntimes" value="2"><br>-->
+<!--    <input type="hidden" name="mathlog2list" value="nsqlist">-->
+<!--    <input type="submit" value="find root">-->
+<!--</form>-->
+<!--    <br>-->
+<!--Value entered : {{sqvalue}}-->
+<!--<br>-->
+<!--{{nthtime}}th Root : {{nsqroot}}-->
+<!--<br>-->
+<!--Square Root : {{sqroot}}-->
+<!--<br>-->
+<!--Cube Root : {{curoot}}-->
+<!--<br>-->
+
+<!--<hr>-->
+<!--<hr>-->
+
+<!--<h2> <u>Trigonomentry</u></h2>-->
+<!--<br>-->
+<!--<form name="trignometryotoperation" action="/mathlog3" method="POST">-->
+<!--    <label>Enter degree</label>-->
+<!--    <input type="number" name="tdegree">-->
+<!--&lt;!&ndash;    <input type="number" name="ntimes">&ndash;&gt;-->
+<!--    <input type="hidden" name="mathlog3list" value="alllist">-->
+<!--    <input type="submit" value="Calculate">-->
+<!--</form>-->
+<!--    <br>-->
+<!--&lt;!&ndash;<br>&ndash;&gt;-->
+<!--Degree : {{degree}}<br>-->
+<!--Sin : {{sin}} <br>-->
+<!--Cos : {{cos}} <br>-->
+<!--Tan : {{tan}} <br>-->
+<!--Cot : {{cot}} <br>-->
+<!--Sec : {{sec}} <br>-->
+<!--Cosec : {{cosec}} <br>-->
+<!--<br>-->
+
+
+<!--<h2> <u>Log calculator</u></h2>-->
+<!--<br>-->
+<!--<form name="logoperation" action="/mathlog1" method="POST">-->
+<!--    <center> <select name="opChoice" id="opChoice" onchange="changeset()">-->
+<!--                <option id="log" value="0" selected='true'>Logarithm(log)</option>-->
+<!--                <option id="nlog" value="1">Natural Logarithm (ln)</option>-->
+<!--                <option id="antilog" value="2"> Anti-logarithm </option>-->
+<!--            </select></center>-->
+<!--            </br>-->
+<!--            <div id="opset1" style="display: block;">-->
+<!--                <label for="data">Enter Number : </label>-->
+<!--                <input type="text" id="num3" name="num3" ></br>-->
+<!--                <label for="data">Enter Base : </label>-->
+<!--                <input type="text" id="base" name="base"></br>-->
+<!--            </div>-->
+
+<!--            <div id="opset2" style="display: none;">-->
+<!--                <label for="data">Enter Number:</label>-->
+<!--                <input type="text" id="num" name="num" ></br>-->
+<!--            </div>-->
+<!--            <div id="opset3" style="display: none;">-->
+<!--                <label for="data">Enter Number:</label>-->
+<!--                <input type="text" id="data" name="data"></br>-->
+<!--                <label for="data">Enter Power:</label>-->
+<!--                <input type="text" id="pow" name="pow" ></br>-->
+<!--            </div>-->
+<!--            <input type="submit" value="Submit">-->
+<!--</form>-->
+<!--    <br>-->
+<!--{{data}}-->
+
+<!--<br>-->
+<!--logpage-->
+
+
+<!--<a href="logcalc">Log</a>-->
+<!--variance : {{var}}-->
+<!--<script type="text/javascript">-->
+
+<!--function ampere() {-->
+<!--    if (document.getElementById('wattts').checked) {-->
+<!--        document.getElementById('ifwatts').style.display = 'block';-->
+<!--        document.getElementById('ifamper').style.display = 'none';-->
+<!--        document.getElementById('ifvolts').style.display = 'none';-->
+
+<!--    }-->
+<!--    else if(document.getElementById('ampere').checked) {-->
+<!--    document.getElementById('ifwatts').style.display = 'none';-->
+<!--    document.getElementById('ifampere').style.display = 'block';-->
+<!--     document.getElementById('ifwatts').style.display = 'none';-->
+<!--     document.getElementById('ifvolts').style.display = 'none';-->
+<!--     }-->
+<!--     else if(document.getElementById('volt').checked) {-->
+<!--     document.getElementById('ifvolts').style.display = 'block';-->
+<!--     document.getElementById('ifwatts').style.display = 'none';-->
+<!--     document.getElementById('ifampere').style.display = 'none';-->
+<!--     }-->
+<!--     else{-->
+<!--     document.getElementById('ifwatts').style.display = 'none';-->
+<!--      document.getElementById('ifamper').style.display = 'none';-->
+<!--      document.getElementById('ifwatts').style.display = 'none';-->
+<!--      document.getElementById('ifvolts').style.display = 'none';-->
+<!--      }-->
+
+<!--}-->
+
+<!--function coverstion() {-->
+<!--    if (document.getElementById('amptVA').checked) {-->
+<!--        document.getElementById('ampstoVA').style.display = 'block';-->
+<!--        document.getElementById('VAtoamps').style.display = 'none';-->
+<!--        document.getElementById('ampstokva').style.display = 'none';-->
+<!--        document.getElementById('kvatoamps').style.display = 'none';-->
+<!--        document.getElementById('wattojoule').style.display = 'none';-->
+<!--    }-->
+<!--    else if(document.getElementById('VAtamps').checked){-->
+<!--        document.getElementById('ampstoVA').style.display = 'none';-->
+<!--        document.getElementById('VAtoamps').style.display = 'block';-->
+<!--        document.getElementById('ampstokva').style.display = 'none';-->
+<!--        document.getElementById('kvatoamps').style.display = 'none';-->
+<!--        document.getElementById('wattojoule').style.display = 'none';-->
+<!--    }-->
+<!--    else if(document.getElementById('kvatamps').checked){-->
+<!--        document.getElementById('ampstoVA').style.display = 'none';-->
+<!--        document.getElementById('VAtoamps').style.display = 'none';-->
+<!--        document.getElementById('ampstokva').style.display = 'none';-->
+<!--        document.getElementById('kvatoamps').style.display = 'block';-->
+<!--        document.getElementById('wattojoule').style.display = 'none';-->
+<!--    }-->
+<!--    else if(document.getElementById('ampstkva').checked){-->
+<!--        document.getElementById('ampstoVA').style.display = 'none';-->
+<!--        document.getElementById('VAtoamps').style.display = 'none';-->
+<!--        document.getElementById('ampstokva').style.display = 'block';-->
+<!--        document.getElementById('kvatoamps').style.display = 'none';-->
+<!--        document.getElementById('wattojoule').style.display = 'none';-->
+<!--    }-->
+<!--    else if(document.getElementById('watstjul').checked){-->
+<!--        document.getElementById('ampstoVA').style.display = 'none';-->
+<!--        document.getElementById('VAtoamps').style.display = 'none';-->
+<!--        document.getElementById('ampstokva').style.display = 'none';-->
+<!--        document.getElementById('kvatoamps').style.display = 'none';-->
+<!--        document.getElementById('wattojoule').style.display = 'block';-->
+<!--    }-->
+<!--}-->
+
+<!--function changeset() {-->
+<!--            const opChoice = document.getElementById('opChoice').value;-->
+<!--            if (opChoice == '0') {-->
+<!--                document.getElementById('opset1').style.display = "block"-->
+<!--                document.getElementById('opset2').style.display = "none"-->
+<!--                document.getElementById('opset3').style.display = "none"-->
+<!--                document.getElementById('result').value = ""-->
+
+<!--            } else if (opChoice == '1') {-->
+<!--                document.getElementById('opset1').style.display = "none"-->
+<!--                document.getElementById('opset2').style.display = "block"-->
+<!--                document.getElementById('opset3').style.display = "none"-->
+<!--                document.getElementById('result').value = ""-->
+
+<!--            } else {-->
+<!--                document.getElementById('opset1').style.display = "none"-->
+<!--                document.getElementById('opset2').style.display = "none"-->
+<!--                document.getElementById('opset3').style.display = "block"-->
+<!--                document.getElementById('result').value = ""-->
+
+<!--            }-->
+
+
+<!--        }-->
+
+<!--</script>-->
+</body>
+</html>

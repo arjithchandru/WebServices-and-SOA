@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roots | SOA lab-2</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+  text-align: center;
+}
+        input[type=text] {
+            width: 80%;
+            padding: 12px 18px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+         input[type=number] {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=submit] {
+            width: 20%;
+            background-color: #00b359;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+        input[type=submit]:hover {
+            background-color: #00994d;
+        }
+        h2 {
+            text-align: center;
+            }
+             .split {
+              height: 80%;
+              width: 50%;
+              position: fixed;
+              z-index: 1;
+              top: 10%;
+              overflow-x: hidden;
+              padding-top: 30px;
+              border-style: solid;
+  border-color: GREY;
+            }
+            .left {
+              left: 0;
+<!--              background-color: #111;-->
+            }
+            .right {
+              right: 0;
+<!--              background-color: red;-->
+            }
+    .texts{
+    padding-left: 40px;
+    }
+    </style>
+</head>
+<body>
+<h2> <u>Square Root, Cube Root, Nth Root</u></h2>
+<br>
+<br>
+<div class="split left">
+<div class="texts">
+    3) Design an Math-Log2 Calculator :<br>To find Squre-root, Cube-root and Nth-root.
+    <br>
+    <br>
+    <u>Input</u><br><br>
+    Enter number : 25<br><br>
+    Enter n times : 12<br>
+    <br>
+        <br><u>Output</u><br><br>
+Value entered : 25<br><br>
+12th Root : 1.3076604975770403<br><br>
+Square Root : 5<br><br>
+Cube Root : 2.924017822973431<br><br>
+    <form action="/">
+   <input type="submit" value="Back">
+</form>
+</div>
+</div>
+<div class="split right">
+    <div class="texts">
+<form name="nsquarerootoperation" action="/mathlog2" method="POST">
+    <label>Enter number: </label>
+    <input type="number" name="sqnum"  min="2" required><br>
+    <label >Enter n times:</label>
+    <input type="number" name="ntimes" value="1"  min="1"><br>
+    <input type="hidden" name="mathlog2list" value="nsqlist">
+    <input type="submit" value="Find root">
+</form>
+    <br>
+Value entered : {{sqvalue}}
+<br>
+        <br>
+{{nthtime}}th Root : {{nsqroot}}
+<br>
+ <br>
+Square Root : {{sqroot}}
+<br>
+        <br>
+Cube Root : {{curoot}}
+<br>
+        <br>
+        </div>
+</div>
+</body>
+</html>
