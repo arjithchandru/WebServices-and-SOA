@@ -1,0 +1,19 @@
+{
+  "name": "gdclacm",
+  "version": "1.0.0",
+  "description": "To find GCD and LCM",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arjith",
+  "license": "ISC",
+  "dependencies": {
+    "body": "^5.1.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "modules": "^0.4.0",
+    "node": "^15.7.0",
+    "parse": "^2.19.0"
+  }
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Set Operations</title>
+    <style>
+    body {
+
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .workarea {
+    text-align : left;
+    padding : 50px;
+    }
+
+    input[type=text] {
+      width:25%;
+      padding: 12px 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+    }
+    input[type=date] {
+      width:25%;
+      padding: 12px 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+    }
+    input[type=submit] {
+      width: 20%;
+      background-color:   #00b359;
+      color: white;
+      padding: 10px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size:17px;
+    }
+
+    input[type=submit]:hover {
+      background-color: #00994d;
+    }
+    .response_form {
+    	padding-top:50px;
+    }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="workarea">
+<h2><u>SET operations</u></h2>
+        <form action="/setops">
+          <label> Select operation : </label>
+     <select name="opChoice" id="opChoice">
+               <option  value="0" selected='true'>Union</option>
+               <option value="1">Intersection</option>
+               <option  value="2"> Difference</option>
+           </select><br>
+            <label for="message">Set A </label><br>
+            <input type="text" id="setA" name="setA" ><br>
+            <label for="message">Set B </label><br>
+            <input type="text" id="setB" name="setB" ><br>
+            <input type="submit" value="Submit">
+        </form>
+        <form class="response_form">
+            <label for="response">Operation : <%= operationName %><br></label><br>
+            <label>SET A :</label>
+            <input type="text"  value="<%= setA %>"><br>
+
+            <label>SET B :</label>
+            <input type="text"  value="<%= setB %>"><br>
+            <label> Output : </label>
+            <input type="text" id="response" name="response" value="<%= response %>"><br>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
