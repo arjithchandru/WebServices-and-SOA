@@ -1,6 +1,16 @@
 import flask
 from flask import request, render_template, jsonify, url_for
 from flask_cors import CORS
+import os
+from PIL import Image, ImageDraw, ImageFont,ImageFilter
+import PIL.ImageDraw
+import PIL.Image
+import base64
+import pyqrcode
+import png
+from pyqrcode import QRCode
+from barcode import EAN13
+from barcode.writer import ImageWriter
 
 from function import *
 
@@ -41,6 +51,18 @@ def rsaopss():
 @app.route('/mdhash', methods=['POST'])
 def mdhashs():
     return render_template("MDhash.html")
+
+@app.route('/gbarcode', methods=['POST'])
+def barcodes():
+    return render_template("barcode.html")
+
+@app.route('/gqrcode', methods=['POST'])
+def qrecodes():
+    return render_template("qrcode.html")
+
+@app.route('/gcaptcha', methods=['POST'])
+def captchas():
+    return render_template("captcha.html")
 
 
 @app.route('/OTPgeneration', methods=['POST'])
@@ -194,6 +216,68 @@ def hashing():
     hashvalue = md5(message.encode("utf-8")).hex()
     # return home(message,md5(message.encode("utf-8")).hex()), 200
     return render_template("MDhash.html", sentence = message,output = hashvalue)
+
+@app.route('/barcode',methods = ['POST'])
+def generateBarcode():
+    param_msg = str(request.form['message'])
+    print(param_msg)
+    barCode = EAN13(param_msg, writer=ImageWriter())
+    barCode.save("BarCode")
+    res=[]
+    with open("./BarCode.png", "rb") as image:
+        encoded_string = base64.b64encode(image.read())
+        res.append(encoded_string.decode("utf-8"))
+    full_filename = os.path.join('BarCode.png')
+    print(full_filename)
+    return render_template("barcode.html", sentence=param_msg, output="Barcode has been generated successfully", image=full_filename)
+
+@app.route('/qrcode',methods = ['POST'])
+def generateQrcode():
+    param_msg = request.form['message']
+    url = pyqrcode.create(param_msg)
+    url.png("QrCode.png", scale = 8)
+    res=[]
+    with open("./QrCode.png", "rb") as image:
+        encoded_string = base64.b64encode(image.read())
+        res.append(encoded_string.decode("utf-8"))
+
+    return render_template("barcode.html", sentence=param_msg, output="QR Code has been generated successfully")
+
+@app.route('/captcha',methods = ['POST'])
+def generateCaptcha():
+    param_msg = request.form['message']
+    img = Image.new('RGB', (200, 100), color = (255, 255, 255))
+    fnt = ImageFont.truetype('./gillsans.ttf', 32)
+    d = ImageDraw.Draw(img)
+    R, G, B = random.randint(10,245), random.randint(10,245), random.randint(10,245),
+    cmin = random.randint(50, 70)
+    cmax = random.randint(90,120)
+    for _ in range(cmin,cmax):
+        r = R + random.randint(-10,10)
+        g = G + random.randint(-10,10)
+        b = B + random.randint(-10,10)
+        diam = random.randint(2,4)
+        x, y = random.randint(0,150), random.randint(0,50)
+        draw = PIL.ImageDraw.Draw(img)
+        draw.ellipse([x,y,x+diam,y+diam], fill=(r,g,b))
+    img.filter(ImageFilter.BoxBlur(10))
+    x=10
+    y=10
+    for i in range(len(param_msg)):
+        d.text((x+(i*17),y),param_msg[i], font=fnt, fill=(0, 0, 0))
+        if(random.randint(0, 4)%2==0):
+            y=y+(random.randint(0,4) *2)
+        else:
+            y=y-(random.randint(0,4) *2)
+    img.rotate(random.randint(-10,10))
+    img.save('captcha.png')
+    res=[]
+    with open("./captcha.png", "rb") as image:
+        encoded_string = base64.b64encode(image.read())
+        res.append(encoded_string.decode("utf-8"))
+
+    return render_template("captcha.html", sentence=param_msg, output="Captcha Code has been generated successfully", Image=res)
+
 
 # app ruuning port
 app.run(host='127.0.0.1', port=5011)
