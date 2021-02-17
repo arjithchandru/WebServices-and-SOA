@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Linear Regression | SOA lab-2</title>
+    <style>
+  body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h2 {
+  text-align: center;
+}
+        input[type=text] {
+            width: 80%;
+            padding: 12px 18px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+         input[type=number] {
+            width: 30%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type=submit] {
+            width: 20%;
+            background-color: #00b359;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+        input[type=submit]:hover {
+            background-color: #00994d;
+        }
+        h2 {
+            text-align: center;
+            }
+             .split {
+              height: 80%;
+              width: 50%;
+              position: fixed;
+              z-index: 1;
+              top: 10%;
+              overflow-x: hidden;
+              padding-top: 30px;
+              border-style: solid;
+  border-color: GREY;
+            }
+            .left {
+              left: 0;
+<!--              background-color: #111;-->
+            }
+            .right {
+              right: 0;
+<!--              background-color: red;-->
+            }
+    .texts{
+    padding-left: 40px;
+    }
+    </style>
+</head>
+<body>
+<br>
+<h2> <u>Linear Regression</u></h2>
+<br>
+<br>
+<div class="split left">
+<div class="texts">
+    5) Design a Basic Static Calculator :<br>To find Linear Regression.
+    <br>
+    <br>
+    <u>Input</u><br><br>
+    Enter X axis : 0,1,2,3,4,5,6,7,8,9<br><br>
+    Enter Y axis : 1,3,2,5,7,8,8,9,10,12<br><br>
+    <br>
+        <br><u>Output</u><br><br>
+X axis : [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]<br><br>
+
+Y axis : [1.0, 3.0, 2.0, 5.0, 7.0, 8.0, 8.0, 9.0, 10.0, 12.0]<br><br>
+
+Linear Regression : ['y = 1.1696969696969697 x = 1.2363636363636368'] <br><br>
+    <form action="/">
+   <input type="submit" value="Back">
+</form>
+</div>
+</div>
+<div class="split right">
+    <div class="texts">
+<form name="Linear regression" action="/linearregression" method="POST">
+    <label>Enter X axis : </label>
+    <input type="text" name="xList" required><br>
+    <label>Enter Y axis : </label>
+    <input type="text" name="yList" required>
+<!--    <input type="hidden" name="mathlog2list" value="gcdlist">-->
+    <input type="submit" value="Find LR">
+</form>
+    <br>
+X axis : {{Xarrayented}}
+<br><br>
+        Y axis : {{Yarrayented}}
+        <br><br>
+Linear Regression : {{res}}
+<br><br>
+
+<br>
+    </div></div>
+</body>
+</html>

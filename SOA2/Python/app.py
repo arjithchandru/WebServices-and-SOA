@@ -1,6 +1,7 @@
 import flask
 from flask import request, render_template, url_for
 from flask_cors import CORS
+from flask import request
 import numpy as np
 
 from Ecals import *
@@ -40,6 +41,10 @@ def rootess():
 @app.route('/electronics', methods=['POST'])
 def electronicss():
     return render_template("electronic.html")
+
+@app.route('/linearreg', methods=['POST'])
+def lers():
+    return render_template("linearregression.html")
 
 
 
@@ -291,5 +296,41 @@ def logcalc():
         # return home(str(data), str(vresult), str(vOpName), str(pow), str(data), str(data))
     return render_template('logarithm.html', data=output)
 
+@app.route('/linearregression', methods=['POST'])
+def lerrs():
+    param_xList = request.form['xList']
+    param_yList = request.form['yList']
+
+    param_xList = list(param_xList.split(','))
+    for i in range(0, len(param_xList)):
+        param_xList[i] = float(param_xList[i])
+
+    param_yList = list(param_yList.split(','))
+    for i in range(0, len(param_yList)):
+        param_yList[i] = float(param_yList[i])
+
+    if len(getNumberList(param_xList)) == len(getNumberList(param_yList)):
+        print(1)
+        xList = getNumberList(param_xList)
+        yList = getNumberList(param_yList)
+        sum_xlist = 0
+        sum_ylist = 0
+        sum_xSquare = 0
+        sum_xy = 0
+        n = len(xList)
+        for i in range(n):
+            sum_xlist = sum_xlist + xList[i]
+            sum_ylist = sum_ylist + yList[i]
+            sum_xSquare = sum_xSquare + (xList[i] * xList[i])
+            sum_xy = sum_xy + (xList[i] * yList[i])
+
+        slope = (n * sum_xy - sum_xlist * sum_ylist) / (n * sum_xSquare - sum_xlist * sum_xlist);
+        intercept = (sum_ylist - slope * sum_xlist) / n
+        equartion = "y = " + str(slope) + " x = " + str(intercept)
+        res = [str(equartion)]
+
+    else:
+        res = "OOPS ! Some internal error"
+    return render_template("linearregression.html", Xarrayented=param_xList, Yarrayented=param_yList, res=res)
 
 app.run(host='127.0.0.1', port=5012)

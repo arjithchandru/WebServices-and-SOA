@@ -1,4 +1,5 @@
 import random
+
 def standard_calculus(li):
     # observation = [1, 5, 4, 2, 0]
     observation = li
@@ -211,3 +212,34 @@ def antiLog(a, b) :
     for i in range(1,b+1):
         c = c * a
     return c
+
+def validateVarianceNumber(given_set):
+        count = 0
+        for c in given_set:
+            if c == ' ' or (c >= '0' and c <= '9'):
+                count = count + 1
+        if count == length(given_set):
+            return True
+        else:
+            return False
+
+def getNumberList(given_set):
+    split_value = []
+    # tmp = ''
+    # for c in given_set:
+    #     if c == ' ':
+    #         split_value.append(float(tmp))
+    #         tmp = ''
+    #     else:
+    #         tmp += c
+    # if tmp != ' ':
+    #     split_value.append(float(tmp))
+    split_value = [float(x) for x in given_set]
+    return split_value
+
+def length(String):
+    # length = 0
+    length=len(String)
+    # for char in String:
+    #     length = length + 1
+    return length
