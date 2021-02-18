@@ -222,7 +222,7 @@ def generateBarcode():
     param_msg = str(request.form['message'])
     print(param_msg)
     barCode = EAN13(param_msg, writer=ImageWriter())
-    barCode.save("BarCode")
+    barCode.save("Images/BarCode")
     res=[]
     with open("./BarCode.png", "rb") as image:
         encoded_string = base64.b64encode(image.read())
@@ -235,13 +235,13 @@ def generateBarcode():
 def generateQrcode():
     param_msg = request.form['message']
     url = pyqrcode.create(param_msg)
-    url.png("QrCode.png", scale = 8)
+    url.png("Images/QrCode.png", scale = 8)
     res=[]
-    with open("./QrCode.png", "rb") as image:
-        encoded_string = base64.b64encode(image.read())
-        res.append(encoded_string.decode("utf-8"))
+    # with open("./QrCode.png", "rb") as image:
+    #     encoded_string = base64.b64encode(image.read())
+    #     res.append(encoded_string.decode("utf-8"))
 
-    return render_template("barcode.html", sentence=param_msg, output="QR Code has been generated successfully")
+    return render_template("qrcode.html", sentence=param_msg, output="QR Code has been generated successfully")
 
 @app.route('/captcha',methods = ['POST'])
 def generateCaptcha():
@@ -270,11 +270,11 @@ def generateCaptcha():
         else:
             y=y-(random.randint(0,4) *2)
     img.rotate(random.randint(-10,10))
-    img.save('captcha.png')
+    img.save('Images/captcha.png')
     res=[]
-    with open("./captcha.png", "rb") as image:
-        encoded_string = base64.b64encode(image.read())
-        res.append(encoded_string.decode("utf-8"))
+    # with open("./captcha.png", "rb") as image:
+    #     encoded_string = base64.b64encode(image.read())
+    #     res.append(encoded_string.decode("utf-8"))
 
     return render_template("captcha.html", sentence=param_msg, output="Captcha Code has been generated successfully", Image=res)
 
