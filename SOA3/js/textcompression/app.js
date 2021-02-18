@@ -21,7 +21,6 @@ app.use(bp.text())
     }
   let global_node_res=[]
   app.get('/hufman', function(req, res) {
-      // let message=req.body["huffman_message"]
       var message = req.query.value
       var freq = {};
       for (var i=0; i<message.length;i++) {
@@ -60,7 +59,7 @@ app.use(bp.text())
       traverse(nodes[0],"")
       let result=[global_node_res]
       global_node_res=[]
-    
+
       res.render('huffman.html', { message: message, result:result});
 
   });
