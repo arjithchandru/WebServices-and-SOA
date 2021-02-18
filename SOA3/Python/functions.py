@@ -142,6 +142,7 @@ def lzw(input_str):
             break
         sub_str = input_str[ind:ind + inc]
         print (sub_str, ind, inc)
+
         if sub_str in keys_dict:
             inc += 1
         else:
