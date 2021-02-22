@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GCF,LCM</title>
+    <style>
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        span {
+            color: white;
+            font-style: oblique;
+        }
+
+
+        .workarea {
+            text-align: left;
+            padding: 50px;
+        }
+
+        input[type=text] {
+            width: 60%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 40%;
+            background-color: #00b359;
+            color: white;
+            padding: 10px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #00994d;
+        }
+
+        .response_form {
+            padding-top: 50px;
+        }
+      </style>
+
+</head>
+
+<body>
+
+    <div class="workarea">
+
+<h2><u>E-Calc</u></h2>
+        <form action="/Ecalc">
+          <label for="message">Enter watts: </label><br>
+<input type="text" id="watts" name="watts"> <br>
+<label for="message">Enter ampere: </label><br>
+<input type="text" id="ampere" name="ampere"><br>
+<label for="message">Enter volts: </label><br>
+<input type="text" id="volts" name="volts" ><br>
+<input type="submit" value="Submit">
+</form>
+<form class="response_form">
+<label for="response">Watts</label><br>
+<input type="text" id="stdresponse" name="stdresponse" value='<%= watts%>'><br>
+<label for="response">volts</label><br>
+<input type="text"  name="volt" value='<%= volts %>'><br>
+<label for="response">Ampere</label><br>
+<input type="text"  name="ampere" value='<%= ampere %>'><br>
+<label for="response">Kilowatt</label><br>
+<input type="text"  name="kilowatts" value='<%= kilowatts %>'><br>
+<label for="response">Kilovolts</label><br>
+<input type="text"  name="kiloVolt" value='<%= kiloVoltamps %>'><br>
+        </form>
+
+
+
+    </div>
+
+</body>
+
+</html>

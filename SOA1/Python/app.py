@@ -1,5 +1,5 @@
 import flask
-from flask import request, render_template, jsonify, url_for
+from flask import request, render_template, url_for
 from flask_cors import CORS
 import os
 from PIL import Image, ImageDraw, ImageFont,ImageFilter
@@ -16,9 +16,11 @@ from function import *
 
 
 app = flask.Flask(__name__, template_folder='templates')
+PEOPLE_FOLDER = os.path.join('static', 'Barcode')
 app.config["DEBUG"] = True
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
 
 @app.route('/')
 def index():
@@ -222,26 +224,30 @@ def generateBarcode():
     param_msg = str(request.form['message'])
     print(param_msg)
     barCode = EAN13(param_msg, writer=ImageWriter())
-    barCode.save("Images/BarCode")
+    barCode.save("static/Images/BarCode")
     res=[]
-    with open("./BarCode.png", "rb") as image:
-        encoded_string = base64.b64encode(image.read())
-        res.append(encoded_string.decode("utf-8"))
-    full_filename = os.path.join('BarCode.png')
-    print(full_filename)
-    return render_template("barcode.html", sentence=param_msg, output="Barcode has been generated successfully", image=full_filename)
+    # with open("./BarCode.png", "rb") as image:
+    #     encoded_string = base64.b64encode(image.read())
+    #     res.append(encoded_string.decode("utf-8"))
+    # full_filename = os.path.join('BarCode.png')
+    # print(full_filename)
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'BarCode.png')
+    # return render_template("index.html", user_image=full_filename)
+    print (full_filename)
+
+    return render_template("barcode.html", sentence=param_msg, output="Barcode has been generated successfully",user_image = full_filename)
 
 @app.route('/qrcode',methods = ['POST'])
 def generateQrcode():
     param_msg = request.form['message']
     url = pyqrcode.create(param_msg)
-    url.png("Images/QrCode.png", scale = 8)
-    res=[]
+    url.png("static/Images/QrCode.png", scale = 8)
+    # res=[]
     # with open("./QrCode.png", "rb") as image:
     #     encoded_string = base64.b64encode(image.read())
     #     res.append(encoded_string.decode("utf-8"))
-
-    return render_template("qrcode.html", sentence=param_msg, output="QR Code has been generated successfully")
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'QRCode.png')
+    return render_template("qrcode.html", sentence=param_msg, output="QR Code has been generated successfully",user_image = full_filename)
 
 @app.route('/captcha',methods = ['POST'])
 def generateCaptcha():
@@ -270,13 +276,14 @@ def generateCaptcha():
         else:
             y=y-(random.randint(0,4) *2)
     img.rotate(random.randint(-10,10))
-    img.save('Images/captcha.png')
-    res=[]
+    img.save('static/Images/captcha.png')
+
     # with open("./captcha.png", "rb") as image:
     #     encoded_string = base64.b64encode(image.read())
     #     res.append(encoded_string.decode("utf-8"))
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'QRCode.png')
 
-    return render_template("captcha.html", sentence=param_msg, output="Captcha Code has been generated successfully", Image=res)
+    return render_template("captcha.html", sentence=param_msg, output="Captcha Code has been generated successfully", user_image = full_filename)
 
 
 # app ruuning port
