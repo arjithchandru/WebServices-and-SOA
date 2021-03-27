@@ -18,11 +18,21 @@ def index():
 
 @app.route('/cinepolice/verifyemail', methods=['POST'])
 def login_email():
-    mail_id = request.form.get("mailid")
-    username = request.form.get("username")
-    mail = main_fun(mail_id)
-    # print(mail)
-    return render_template('verifymail.html',useremailadderss = mail_id, username=username, application_name="CINEPOLICE")
+    option_value = request.form.get("opvalue")
+    if (option_value == "mailing"):
+        mail_id = request.form.get("mailid")
+        username = request.form.get("username")
+        mail = main_fun(mail_id)
+        # print(mail)
+        return render_template('verifymail.html',useremailadderss = mail_id, username=username, application_name="CINEPOLICE")
+    elif(option_value == "mobilenumber"):
+        mobile_id = request.form.get("mobilenumber")
+        username = request.form.get("username")
+        mail = send_otp_mobile()
+        # print(mail)
+        return render_template('verifyotp.html', useremailadderss=mobile_id, username=username, application_name="CINEPOLICE")
+    else:
+        return render_template("error404.html")
 
 @app.route('/cinepolice/movielist')
 def movielist():

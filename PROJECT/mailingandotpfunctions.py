@@ -11,11 +11,11 @@ import ssl
 def generateOTP():
     # Declare a string variable
     # which stores all string
-    string = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()+_-='
+    string = '0123456789'
     OTP = ""
 
     length = len(string)
-    for i in range(random.randint(5, 10)):
+    for i in range(random.randint(5, 7)):
         OTP += string[math.floor(random.random() * length)]
 
     return OTP
@@ -41,6 +41,9 @@ def send_otp_mobile():
     except (requests.exceptions.RequestException,
             clx.xms.exceptions.ApiException) as ex:
         print('Failed to communicate with XMS: %s' % str(ex))
+
+    result = "mobile_otp_sent"
+    return result
 
 
 def send_otp_mail(mail_id):
