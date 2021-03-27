@@ -25,6 +25,9 @@ def rnls():
 @app.route('/lzwhtml', methods=['POST'])
 def rlzw():
     return render_template("lzw.html")
+@app.route('/losslesstml', methods=['POST'])
+def lossles():
+    return render_template("lossless.html")
 
 
 @app.route('/hufman', methods=['POST'])
@@ -50,5 +53,15 @@ def find_lwz():
     compressed = compress(select)
     decompressed = decompress(compressed)
     return render_template("lzw.html",etdstring=select,lzwcode=word, compressed=compressed, decompressed=decompressed)
+
+@app.route('/lossles', methods=['POST'])
+def find_losscompression():
+    print('at start')
+    select = request.form.get("sentence")
+    encd,decd,huffmanCode = buildHuffmanTree(select)
+    return render_template("lossless.html",etdstring=select, encd=encd, decd=decd)
+    # RunlengthCode = printRLE(select)
+    # return render_template("lossless.html.html", etdstring=select, RunlengthCode=RunlengthCode)
+
 
 app.run(host='127.0.0.1', port=5013)

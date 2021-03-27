@@ -2,17 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SOA lab 3</title>
-<style>
-      body {
-
+    <title>Lossless | SOA lab-3</title>
+    <style>
+  body {
             font-family: Arial, Helvetica, sans-serif;
         }
         h2 {
   text-align: center;
 }
-
-
         input[type=text] {
             width: 80%;
             padding: 12px 18px;
@@ -31,9 +28,8 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-
         input[type=submit] {
-            width: 70%;
+            width: 20%;
             background-color: #00b359;
             color: white;
             padding: 10px 20px;
@@ -43,14 +39,12 @@
             cursor: pointer;
             font-size: 17px;
         }
-
         input[type=submit]:hover {
             background-color: #00994d;
         }
         h2 {
             text-align: center;
             }
-
              .split {
               height: 80%;
               width: 50%;
@@ -62,13 +56,10 @@
               border-style: solid;
   border-color: GREY;
             }
-
             .left {
               left: 0;
 <!--              background-color: #111;-->
-
             }
-
             .right {
               right: 0;
 <!--              background-color: red;-->
@@ -77,50 +68,40 @@
     padding-left: 40px;
     }
     </style>
-
-
 </head>
 <body>
-<h2> <u>SOA lab-3</u></h2>
+<br>
+<h2> <u>Lossless Text Compression</u></h2>
 <br>
 <br>
 <div class="split left">
 <div class="texts">
-    i. Implement Huffman Coding Techniques in Text Compression. <br><br>
-ii. Implement Run-length Coding Techniques in Text Compression.<br><br>
-iii. Implement Lempel-Ziv-Welch (LZW) Coding Techniques in Text Compression<br><br>
-iv. Implement Lossless Text Compression Techniques <br><br>
- v. Implement Fast Compression Algorithm for Unicode Text.
+    1) Implement Lossless Text Compression.
+    <br>
+    <br>
+    <u>Input</u><br><br>
+    <br><br>
+    <br>
+        <br><u>Output</u><br><br>
 <br><br>
 
-
-
+    <form action="/">
+   <input type="submit" value="Back">
+</form>
 </div>
 </div>
-
-
-
 <div class="split right">
     <div class="texts">
-
-  <form action="/huf" method="POST">
-    <input type="hidden" value="Huffman Compression">
-   <input type="submit" value="Huffman Coding Compression">
+<form name="losslessoperation" action="/lossles" method="POST">
+    <label>Enter Text : </label>
+    <input type="text" name="sentence" required>
+    <input type="submit" value="Calculate">
 </form>
-        <form action="/rnlc" method="POST">
-    <input type="hidden" value="Run Length">
-   <input type="submit" value="Run-Length Coding">
-</form>
-        <form action="/lzwhtml" method="POST">
-    <input type="hidden" value="LZW">
-   <input type="submit" value=" Lempel–Ziv–Welch ">
-</form>
-
-        <form action="/losslesstml" method="POST">
-    <input type="hidden" value="Loss Less Text Compression">
-   <input type="submit" value=" Loss Less Text Compression ">
-</form>
-    </div>
-</div>
+    <br>
+Entered String : {{etdstring}}<br><br>
+Encoded string : {{encd}}<br><br>
+Decrypted string : {{decd}}
+<br>
+    </div></div>
 </body>
 </html>

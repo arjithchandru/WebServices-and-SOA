@@ -2,17 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SOA lab 3</title>
-<style>
+    <title>Barcode | SOA lab-1</title>
+ <style>
       body {
-
             font-family: Arial, Helvetica, sans-serif;
         }
         h2 {
   text-align: center;
 }
-
-
         input[type=text] {
             width: 80%;
             padding: 12px 18px;
@@ -23,7 +20,7 @@
             box-sizing: border-box;
         }
          input[type=number] {
-            width: 30%;
+            width: 80%;
             padding: 12px 20px;
             margin: 8px 0;
             display: inline-block;
@@ -31,9 +28,8 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-
         input[type=submit] {
-            width: 70%;
+            width: 50%;
             background-color: #00b359;
             color: white;
             padding: 10px 20px;
@@ -43,14 +39,12 @@
             cursor: pointer;
             font-size: 17px;
         }
-
         input[type=submit]:hover {
             background-color: #00994d;
         }
         h2 {
             text-align: center;
             }
-
              .split {
               height: 80%;
               width: 50%;
@@ -62,64 +56,51 @@
               border-style: solid;
   border-color: GREY;
             }
-
             .left {
               left: 0;
 <!--              background-color: #111;-->
-
             }
-
             .right {
               right: 0;
 <!--              background-color: red;-->
             }
-    .texts{
-    padding-left: 40px;
+    .texts,.texts1{
+        padding-left: 40px;
+        display:flex;
+        margin-bottom:30px;
+    }
+    .texts1{
+        flex-direction:column;
+        width:50%;
     }
     </style>
-
-
 </head>
 <body>
-<h2> <u>SOA lab-3</u></h2>
+<h2> <u>Bar Code</u></h2>
 <br>
 <br>
-<div class="split left">
+<div class="content-question">
 <div class="texts">
-    i. Implement Huffman Coding Techniques in Text Compression. <br><br>
-ii. Implement Run-length Coding Techniques in Text Compression.<br><br>
-iii. Implement Lempel-Ziv-Welch (LZW) Coding Techniques in Text Compression<br><br>
-iv. Implement Lossless Text Compression Techniques <br><br>
- v. Implement Fast Compression Algorithm for Unicode Text.
+   7) Generate Barcode.
 <br><br>
-
-
-
+    <form action="/">
+   <input style="width:100px;background-color:blue;margin-left:25px;margin-top:-10px" type="submit" value="Back">
+</form>
 </div>
 </div>
-
-
-
-<div class="split right">
-    <div class="texts">
-
-  <form action="/huf" method="POST">
-    <input type="hidden" value="Huffman Compression">
-   <input type="submit" value="Huffman Coding Compression">
+<div class="contents">
+    <div class="texts1">
+  <form action="/barcode" method="POST">
+<!--      <label>Enter the text : </label>-->
+<input type="text" id="message" placeholder="Enter the data" name="message" required><br>
+   <input style="width:100px;background-color:blue;margin-top:10px" type="submit" value="Convert">
 </form>
-        <form action="/rnlc" method="POST">
-    <input type="hidden" value="Run Length">
-   <input type="submit" value="Run-Length Coding">
-</form>
-        <form action="/lzwhtml" method="POST">
-    <input type="hidden" value="LZW">
-   <input type="submit" value=" Lempel–Ziv–Welch ">
-</form>
+         <span style="margin-top:20px;margin-left:15px">Data before processing: {{sentence}}<br><br></span>
+        <span style="margin-top:20px;margin-left:15px">Data after processing: {{output}}<br><br></span>
 
-        <form action="/losslesstml" method="POST">
-    <input type="hidden" value="Loss Less Text Compression">
-   <input type="submit" value=" Loss Less Text Compression ">
-</form>
+<!--        <br><br>-->
+<!--          <img src="{{ url_for('static', filename = 'Images/BarCode.png') }}" alt="User Image" width="400" height="185">-->
+
     </div>
 </div>
 </body>

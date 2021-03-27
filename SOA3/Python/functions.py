@@ -109,7 +109,7 @@ def printRLE(st):
     i = 0
     tx = ''
 
-    while i < n - 1:
+    while i < n:
 
         # Count occurrences of
         # current character
