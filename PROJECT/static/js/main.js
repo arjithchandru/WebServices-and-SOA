@@ -286,6 +286,7 @@
 		}
 		// add selected class
 		classie.add(planseat, 'row__seat--selected');
+//		console.log(planseat);
 
 		// the real seat
 		var seat = seats[planseats.indexOf(planseat)];
