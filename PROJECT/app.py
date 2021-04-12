@@ -34,6 +34,23 @@ def login_email():
     else:
         return render_template("error404.html")
 
+@app.route('/cinepolice/verifyotp', methods=['POST'])
+def OTP_validation_process():
+    otp_value = request.form.get("otpvalue")
+    if (otp_value == ""):
+        return render_template("error404.html")
+
+    elif(otp_value != ""):
+        mobile_id = request.form.get("mobilenumber")
+        username = request.form.get("username")
+        verfied = checkotp_value(otp_value)
+        if(verfied == "success"):
+            return render_template('movielist.html', useremailadderss=mobile_id, username=username, application_name="CINEPOLICE")
+        else:
+            return render_template("error404.html")
+    else:
+        return render_template("error404.html")
+
 @app.route('/cinepolice/movielist')
 def movielist():
     return render_template("movielist.html")
@@ -42,5 +59,8 @@ def movielist():
 def bookingseat():
     return render_template("booking.html")
 
+@app.route('/seating')
+def seats():
+    return render_template("seating.html")
 
 app.run(host='127.0.0.1', port = 5015)

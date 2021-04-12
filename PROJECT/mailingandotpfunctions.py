@@ -82,6 +82,14 @@ def send_otp_mail(mail_id):
     result = "OTP Sent Through mail and mobile number"
     return result
 
+def checkotp_value(otp_val):
+    if(otp_val == comn_otp):
+        print("OTP valid after comparision")
+        return "success"
+    else:
+        print("invalid OTP entered")
+        return "failed"
+
 
 def main_fun(mail_id):
     # successmobile = send_otp_mobile()
