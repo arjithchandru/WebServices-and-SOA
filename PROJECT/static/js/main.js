@@ -19,6 +19,7 @@
 	/**********************************************/
 	/** https://gist.github.com/desandro/1866474 **/
 	/**********************************************/
+
 	var lastTime = 0;
 	var prefixes = 'webkit moz ms o'.split(' ');
 	// get unprefixed rAF and cAF, if present
@@ -218,6 +219,7 @@
 		var onSeatSelect = function(ev) { selectSeat(ev.target); };
 		planseats.forEach(function(planseat) {
 			planseat.addEventListener('click', onSeatSelect);
+
 		});
 
 		// enabling/disabling the tilt
@@ -277,22 +279,54 @@
 
 	// select a seat on the seat plan
 	function selectSeat(planseat) {
+	var calculation;
 		if( classie.has(planseat, 'row__seat--reserved') ) {
 			return false;
 		}
 		if( classie.has(planseat, 'row__seat--selected') ) {
 			classie.remove(planseat, 'row__seat--selected');
+//			console.log(planseats.indexOf(planseat));
+            calculation = "false";
+            calculate_amt(calculation);
 			return false;
 		}
 		// add selected class
 		classie.add(planseat, 'row__seat--selected');
-//		console.log(planseat);
+        //console.log(planseat);
+        calculation = "true";
+        calculate_amt(calculation);
+        console.log(planseats.indexOf(planseat));
+
+
 
 		// the real seat
 		var seat = seats[planseats.indexOf(planseat)];
 		// show the seat´s perspective
 		previewSeat(seat);
 	}
+
+	// Amout calculation for seats booked
+	function calculate_amt(c_value) {
+	var totalamt = document.getElementById('totalamount').value;
+	var five = 5;
+	console.log(totalamt);
+	console.log(c_value);
+	if(c_value == "false"){
+	var de = totalamt - five;
+	document.getElementById('totalamount').value = de ;
+	return;
+	}
+	else if(c_value == "true"){
+	var de = parseInt(totalamt) + parseInt(five);
+	console.log(de);
+	document.getElementById('totalamount').value = de;
+	return;
+	}
+	else{
+	document.getElementById('totalamount').value = totalamt;
+	return;
+	}
+	};
 
 	// preview perspective from the selected seat. Moves the camera to that position.
 	function previewSeat(seat) {
