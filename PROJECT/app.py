@@ -45,7 +45,8 @@ def OTP_validation_process():
         username = request.form.get("username")
         verfied = checkotp_value(otp_value)
         if(verfied == "success"):
-            return render_template('movielist.html', useremailadderss=mobile_id, username=username, application_name="CINEPOLICE")
+            # return render_template('movielist.html', useremailadderss=mobile_id, username=username, application_name="CINEPOLICE")
+            return render_template('seating.html', useremailadderss=mobile_id, username=username,application_name="CINEPOLICE")
         else:
             return render_template("error404.html")
     else:
@@ -53,11 +54,12 @@ def OTP_validation_process():
 
 @app.route('/cinepolice/movielist')
 def movielist():
-    return render_template("movielist.html")
+    # return render_template("movielist.html")
+    return render_template("seating.html")
 
-@app.route('/cinepolice/booking')
-def bookingseat():
-    return render_template("booking.html")
+# @app.route('/cinepolice/booking')
+# def bookingseat():
+#     return render_template("booking.html")
 
 @app.route('/seating')
 def seats():

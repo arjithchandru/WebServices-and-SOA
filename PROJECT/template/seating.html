@@ -32,9 +32,9 @@
 				<div class="cube__side cube__side--back">
 					<div class="screen">
 						<div class="video">
-							<video class="video-player" src="{{ url_for('static',filename='media/sintel.mp4')}}" preload="auto" poster="{{ url_for('static',filename='media/sintel.jpg')}}">
-								<source src="{{ url_for('static',filename='media/sintel.ogg')}}" type='video/ogg; codecs="theora, vorbis"'>
-								<source src="media/sintel.mp4" type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>
+							<video class="video-player" src="{{ url_for('static',filename='media/sintel.mp4')}}" preload="auto" poster="{{ url_for('static',filename='media/karnan.jpg')}}">
+<!--								<source src="{{ url_for('static',filename='media/sintel.ogg')}}" type='video/ogg; codecs="theora, vorbis"'>-->
+<!--								<source src="media/sintel.mp4" type='video/mp4; codecs="avc1.4D401E, mp4a.40.2"'>-->
 								<p>Sorry, but your browser does not support this video format.</p>
 							</video>
 							<button class="action action--play action--shown" aria-label="Play Video"></button>
@@ -42,8 +42,8 @@
 						<div class="intro intro--shown">
 							<div class="intro__side">
 								<h2 class="intro__title">
-									<span class="intro__up">Project name <em>presents</em></span>
-									<span class="intro__down">Movie Name <span class="intro__partial"><em>by</em> <a>DIRECTOR NAME</a></span></span>
+									<span class="intro__up">Kalaipuli S Thanu <em>presents</em></span>
+									<span class="intro__down">karnan <span class="intro__partial"><em>by</em> <a>Mari Selvaraj</a></span></span>
 								</h2>
 							</div>
 							<div class="intro__side">
@@ -791,7 +791,7 @@
 				<li class="legend__item legend__item--selected">Selected</li>
 			</ul>
 			<input id="totalamount" type="text" value= 0 >
-			<button class="action action--buy" >Buy ticket</button>
+			<button id="buytickets_button" class="action action--buy" disabled style="background-color:Grey">Buy ticket</button>
 		</div><!-- /plan -->
 		<button class="action action--lookaround action--disabled" arial-label="Unlook View"></button>
 		<script src="{{ url_for('static',filename='js/classie.js')}}"></script>

@@ -4,7 +4,7 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2015, Codrops
  * http://www.codrops.com
  */
@@ -15,7 +15,7 @@
 	/**
 	 * some helper functions
 	 */
-	
+
 	/**********************************************/
 	/** https://gist.github.com/desandro/1866474 **/
 	/**********************************************/
@@ -153,9 +153,9 @@
 		seat_width = seats[0].offsetWidth,
 		// number of seats per row
 		seats_row = rows[0].children.length,
-		// the sum of the room´s left margin with the room´s right margin is four times the width of a seat 
+		// the sum of the room´s left margin with the room´s right margin is four times the width of a seat
 		side_margin = 4 * seat_width,
-		
+
 		// if the following is changed, the CSS values also need to be adjusted (and vice-versa)
 		// distance from first row to the screen
 		row_front_gap = 800,
@@ -243,7 +243,7 @@
 					// transform values
 					rotX = tiltRotation.rotateX ? roomTransform.rotateX -  (2 * tiltRotation.rotateX / winsize.height * mousepos.y - tiltRotation.rotateX) : 0,
 					rotY = tiltRotation.rotateY ? roomTransform.rotateY +  (2 * tiltRotation.rotateY / winsize.width * mousepos.x - tiltRotation.rotateY) : 0;
-		
+
 				// apply transform
 				applyRoomTransform({'translateX' : roomTransform.translateX, 'translateY' : roomTransform.translateY, 'translateZ' : roomTransform.translateZ, 'rotateX' : rotX, 'rotateY' : rotY});
 			});
@@ -251,13 +251,13 @@
 		document.addEventListener('mousemove', onMouseMove);
 
 		// select seats control click (intro button): show the room layout
-		var onSelectSeats = function() { 
+		var onSelectSeats = function() {
 			classie.remove(intro, 'intro--shown');
 			classie.add(plan, 'plan--shown');
 			classie.add(playCtrl, 'action--faded');
 			zoomOutScreen(function() {
 				showTiltCtrl();
-			}); 
+			});
 		};
 		selectSeatsCtrl.addEventListener('click', onSelectSeats);
 
@@ -308,22 +308,58 @@
 	// Amout calculation for seats booked
 	function calculate_amt(c_value) {
 	var totalamt = document.getElementById('totalamount').value;
-	var five = 5;
+//	console.log(totalamt);
+	if(totalamt == 0)
+	{
+	document.getElementById('buytickets_button').setAttribute("disabled","disabled");
+	document.getElementById('buytickets_button').style.backgroundColor='Grey';
+	}else{
+	document.getElementById('buytickets_button').removeAttribute("disabled");
+	document.getElementById('buytickets_button').style.backgroundColor='#26AD4F';
+	}
+	var temp_ticket_price = 160;
+  console.log(temp_ticket_price);
 	console.log(totalamt);
 	console.log(c_value);
+
 	if(c_value == "false"){
-	var de = totalamt - five;
+	var de = totalamt - temp_ticket_price;
 	document.getElementById('totalamount').value = de ;
+	if(de == 0)
+	{
+	document.getElementById('buytickets_button').setAttribute("disabled","disabled");
+	document.getElementById('buytickets_button').style.backgroundColor='Grey';
+	}else{
+	document.getElementById('buytickets_button').removeAttribute("disabled");
+	document.getElementById('buytickets_button').style.backgroundColor='#26AD4F';
+	}
 	return;
 	}
 	else if(c_value == "true"){
-	var de = parseInt(totalamt) + parseInt(five);
+	var de = parseInt(totalamt) + parseInt(temp_ticket_price);
 	console.log(de);
 	document.getElementById('totalamount').value = de;
+	if(de == 0)
+	{
+	document.getElementById('buytickets_button').setAttribute("disabled","disabled");
+	document.getElementById('buytickets_button').style.backgroundColor='Grey';
+	}else{
+	document.getElementById('buytickets_button').removeAttribute("disabled");
+	document.getElementById('buytickets_button').style.backgroundColor='#26AD4F';
+	}
 	return;
 	}
 	else{
+	console.log("lastelse");
 	document.getElementById('totalamount').value = totalamt;
+	if(totalamt == 0)
+	{
+	document.getElementById('buytickets_button').setAttribute("disabled","disabled");
+	document.getElementById('buytickets_button').style.backgroundColor='Grey';
+	}else{
+	document.getElementById('buytickets_button').removeAttribute("disabled");
+	document.getElementById('buytickets_button').style.backgroundColor='#26AD4F';
+	}
 	return;
 	}
 	};
@@ -342,18 +378,18 @@
 				 st.getPropertyValue('-o-transform') ||
 				 st.getPropertyValue('transform') ||
 				 'Either no transform set, or browser doesn´t do getComputedStyle';
-			
+
 		if( tr === 'none' ) return;
-		
+
 		var values = tr.split('(')[1],
 			values = values.split(')')[0],
 			values = values.split(','),
-			
+
 			// translateY value of this seat´s row
 			y = values[13],
 			// translateZ value of this seat´s row
 			z = values[14],
-		
+
 			// seat´s center point (x-axis)
 			seatCenterX = seat.offsetLeft + side_margin/2 + seat.offsetWidth/2,
 
@@ -365,7 +401,7 @@
 			// calculate how much to rotate in the x-axis (the more close to the screen the more we need to rotate)
 			firstRowZ = roomsize.z - row_front_gap,
 			lastRowZ = firstRowZ - (totalRows - 1 + row_gap_amount) * row_back,
-			
+
 			// calculate how much to rotate in the y-axis (the more close to the screen the more we need to rotate.
 			// Also the same applies when the distance from the center of the room to both sides increases.
 			// for the last row:
@@ -389,7 +425,7 @@
 
 		// apply transform
 		applyRoomTransform();
-		
+
 		onEndTransition(room, function() {
 			removeRoomTransition();
 		});
