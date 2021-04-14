@@ -1,12 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Movielist | cinepolice</title>
-</head>
-<body>
-<h1> LIST OF MOVIES IS SHOWN HERE</h1>
-<br>
-<h2>UNDER CONSTRUCTION</h2>
-</body>
+
+    <style>
+      .card {
+        border: 20px;
+        width: 300px;
+        height: 480px;
+        background: #000;
+        box-shadow: 5px 10px 8px #888888;
+        text-align: left;
+        display: inline-block;
+      }
+      .card .poster {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card .poster :before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(0deg, #000, 50%, transparent);
+        transition: 0.5s;
+      }
+      .card .poster img {
+        width: 100%;
+      }
+
+      .h2 {
+        color: white;
+      }
+      .details {
+        position: relative;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+
+        left: 0;
+        box-sizing: border-box;
+        transition: 0.5s;
+        z-index: 2;
+      }
+      .details h2 {
+        color: white;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+      }
+      .details h2 span {
+        font-size: 14px;
+        color: #ff9800;
+      }
+      .rating {
+        position: relative;
+        padding: 5px 0;
+      }
+
+      .rating .fa {
+        color: #f7f406;
+        margin-right: 2px;
+        font-size: 16px;
+      }
+
+      .rating span {
+        color: #fff;
+        padding: 0 5px;
+      }
+
+      .tags {
+        position: relative;
+        margin-top: 5px;
+      }
+      .tags span {
+        padding: 2px 5px;
+        margin-right: 2px;
+        color: #fff;
+        border-radius: 4px;
+      }
+      .tags span.fantasy {
+        background: #7206f7;
+      }
+
+      .tags span.romance {
+        background: #7206f7;
+      }
+
+      .info {
+        color: #fff;
+      }
+
+      .info p {
+        margin: 15px 0 10px;
+      }
+
+      .star {
+        position: relative;
+      }
+
+      .star h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: #f7f406;
+      }
+      .star ul {
+        margin: 10px 0 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .star ul li {
+        list-style: none;
+        width: 35px;
+        height: 35px;
+        background: #fff;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #fff;
+      }
+
+      .star ul li img {
+        width: 100%;
+      }
+
+      .outer {
+        padding: 50px;
+        display: inline-block;
+      }
+      .button {
+        color: #fff;
+        padding: 10px;
+        border-radius: 25px;
+        width: 50%;
+        text-align: center;
+        text-decoration: none;
+      }
+      a:link {
+        text-decoration: none;
+      }
+
+      body {
+        height: auto;
+        font-family: "Open Sans", sans-serif;
+        background: #092756;
+        background: -moz-radial-gradient(
+            0% 100%,
+            ellipse cover,
+            rgba(104, 128, 138, 0.4) 10%,
+            rgba(138, 114, 76, 0) 40%
+          ),
+          -moz-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(
+                  42,
+                  60,
+                  87,
+                  0.4
+                )
+                100%),
+          -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(
+            0% 100%,
+            ellipse cover,
+            rgba(104, 128, 138, 0.4) 10%,
+            rgba(138, 114, 76, 0) 40%
+          ),
+          -webkit-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(
+                  42,
+                  60,
+                  87,
+                  0.4
+                )
+                100%),
+          -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -o-radial-gradient(
+            0% 100%,
+            ellipse cover,
+            rgba(104, 128, 138, 0.4) 10%,
+            rgba(138, 114, 76, 0) 40%
+          ),
+          -o-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(
+                  42,
+                  60,
+                  87,
+                  0.4
+                )
+                100%),
+          -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -ms-radial-gradient(
+            0% 100%,
+            ellipse cover,
+            rgba(104, 128, 138, 0.4) 10%,
+            rgba(138, 114, 76, 0) 40%
+          ),
+          -ms-linear-gradient(top, rgba(57, 173, 219, 0.25) 0%, rgba(
+                  42,
+                  60,
+                  87,
+                  0.4
+                )
+                100%),
+          -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(
+            0% 100%,
+            ellipse cover,
+            rgba(104, 128, 138, 0.4) 10%,
+            rgba(138, 114, 76, 0) 40%
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(57, 173, 219, 0.25) 0%,
+            rgba(42, 60, 87, 0.4) 100%
+          ),
+          linear-gradient(135deg, #670d10 0%, #092756 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+      }
+
+      .center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+          <li><a href="#">Page 3</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="center">
+      <div class="outer">
+        <div class="card">
+          <div class="poster"><img src="static/img/karnan1.jpg" /></div>
+          <div class="details">
+            <h2>Karnan <br /><span>Directed by Mari Selvaraj</span></h2>
+            <div class="rating">
+              <i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i>
+              <span></span>
+            </div>
+            <div class="tags">
+              <span class="fantasy">Politics</span>
+              <span class="romance">Action</span>
+            </div>
+            <div class="info">
+              <p>architecto placeat porro id esse voluptatum eos est.</p>
+            </div>
+            <div class="star">
+              <h4>cast</h4>
+              <ul>
+                <li><img src="static/img/tree.webp" alt="" /></li>
+
+                <li><img src="static/img/tree.webp" alt="" /></li>
+
+                <li>
+                  <img src="static/img/tree.webp" alt="" />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="outer">
+        <div class="card">
+          <div class="poster"><img src="static/img/master.jpg" /></div>
+          <div class="details">
+            <h2>Tree of life <br /><span>Directed by Bill condon</span></h2>
+            <div class="rating">
+              <i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i>
+              <span></span>
+            </div>
+            <div class="tags">
+              <span class="fantasy">fantasy</span>
+              <span class="romance">romance</span>
+            </div>
+            <div class="info">
+              <p>architecto placeat porro id esse voluptatum eos est.</p>
+            </div>
+            <div class="star">
+              <h4>cast</h4>
+              <ul>
+                <li><img src="static/img/tree.webp" alt="" /></li>
+
+                <li><img src="static/img/tree.webp" alt="" /></li>
+
+                <li>
+                  <img src="static/img/tree.webp" alt="" />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="outer">
+        <div class="card">
+          <div class="poster"><img src="static/img/soorarai.jpg" /></div>
+          <div class="details">
+            <h2>
+              Soorarai Pottru <br /><span>Directed by Sudha kongara</span>
+            </h2>
+            <div class="rating">
+              <i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i
+              ><i class="fa fa-star" aria-hidden="true"></i>
+              <span></span>
+            </div>
+            <div class="tags">
+              <span class="fantasy">Inspirational</span>
+              <span class="romance">Action</span>
+            </div>
+            <div class="info">
+              <p>architecto placeat porro id esse voluptatum eos est.</p>
+            </div>
+            <div class="star">
+              <h4>cast</h4>
+              <ul>
+                <li><img src="static/img/tree.webp" alt="" /></li>
+
+                <li><img src="static/img/tree.webp" alt="" /></li>
+
+                <li>
+                  <img src="static/img/tree.webp" alt="" />
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
