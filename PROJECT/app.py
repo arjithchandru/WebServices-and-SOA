@@ -54,15 +54,26 @@ def OTP_validation_process():
 
 @app.route('/cinepolice/movielist')
 def movielist():
-    # return render_template("movielist.html")
-    return render_template("seating.html")
+    return render_template("movielist.html")
+    # return render_template("seating.html")
 
 # @app.route('/cinepolice/booking')
 # def bookingseat():
 #     return render_template("booking.html")
 
-@app.route('/seating')
+@app.route('/cinepolice/seating', methods=['POST'])
 def seats():
-    return render_template("seating.html")
+    dirname = request.form.get("dirname")
+    producername = request.form.get("producername")
+    moviename = request.form.get("moviename")
+    imgposter = request.form.get("imageposter")
+    if (moviename == "karnan"):
+        return render_template("movie1.html", moviename=moviename, dirname=dirname, producername=producername, imgposter=imgposter)
+    elif (moviename == "Rocketry"):
+        return render_template("movie2.html", moviename=moviename, dirname=dirname, producername=producername, imgposter=imgposter)
+    elif(moviename == "Soorarai Pottru"):
+        return render_template("movie3.html", moviename=moviename, dirname=dirname, producername=producername, imgposter=imgposter)
+    else:
+        return render_template("error404.html")
 
 app.run(host='127.0.0.1', port = 5015)

@@ -21,7 +21,7 @@
       .card {
         border: 20px;
         width: 300px;
-        height: 480px;
+        height: 520px;
         background: #000;
         box-shadow: 5px 10px 8px #888888;
         text-align: left;
@@ -255,19 +255,19 @@
     <div class="center">
       <div class="outer">
         <div class="card">
-          <div class="poster"><img src="static/img/karnan1.jpg" /></div>
+          <div class="poster"><img src="{{ url_for('static',filename='media/karnan1.jpg')}}" /></div>
           <div class="details">
             <h2>Karnan <br /><span>Directed by Mari Selvaraj</span></h2>
             <div class="rating">
-              <i class="fa fa-star" aria-hidden="true"></i
-              ><i class="fa fa-star" aria-hidden="true"></i
-              ><i class="fa fa-star" aria-hidden="true"></i
-              ><i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
               <span></span>
             </div>
             <div class="tags">
               <span class="fantasy">Politics</span>
-              <span class="romance">Action</span>
+              <span class="romance">Inspirational</span>
             </div>
             <div class="info">
               <p>architecto placeat porro id esse voluptatum eos est.</p>
@@ -283,16 +283,24 @@
                   <img src="static/img/tree.webp" alt="" />
                 </li>
               </ul>
-            </div>
+            </div><br>
+            <form method="post" action="/cinepolice/seating">
+              <input type="hidden" name="moviename" value="karnan" />
+              <input type="hidden" name="dirname" value="Mari Selvaraj" />
+              <input type="hidden" name="producername" value="Kalaipuli S Thanu" />
+              <input type="hidden" name="imageposter" value="karnan.jpg">
+<!--              <input type="button" value="submit" >-->
+              <button type="submit">view more</button>
+            </form>
           </div>
         </div>
       </div>
 
       <div class="outer">
         <div class="card">
-          <div class="poster"><img src="static/img/master.jpg" /></div>
+          <div class="poster"><img src="{{ url_for('static',filename='media/rocketry.jpg')}}" /></div>
           <div class="details">
-            <h2>Tree of life <br /><span>Directed by Bill condon</span></h2>
+            <h2>Rocketry <br /><span>Directed by Madhavan</span></h2>
             <div class="rating">
               <i class="fa fa-star" aria-hidden="true"></i
               ><i class="fa fa-star" aria-hidden="true"></i
@@ -318,13 +326,20 @@
                   <img src="static/img/tree.webp" alt="" />
                 </li>
               </ul>
-            </div>
+            </div><br><br>
+            <form method="post" action="/cinepolice/seating">
+              <input type="hidden" name="moviename" value="Rocketry" />
+              <input type="hidden" name="dirname" value="Madhavan" />
+              <input type="hidden" name="producername" value="Tricolour Films" />
+<!--              <input type="button" value="submit" >-->
+              <button type="submit">view more</button>
+            </form>
           </div>
         </div>
       </div>
       <div class="outer">
         <div class="card">
-          <div class="poster"><img src="static/img/soorarai.jpg" /></div>
+          <div class="poster"><img src="{{ url_for('static',filename='media/soorarai.jpg')}}" /></div>
           <div class="details">
             <h2>
               Soorarai Pottru <br /><span>Directed by Sudha kongara</span>
@@ -354,7 +369,14 @@
                   <img src="static/img/tree.webp" alt="" />
                 </li>
               </ul>
-            </div>
+            </div><br>
+                        <form method="post" action="/cinepolice/seating">
+              <input type="hidden" name="moviename" value="Soorarai Pottru" />
+              <input type="hidden" name="dirname" value="Sudha kongara" />
+              <input type="hidden" name="producername" value="2D Entertinements" />
+<!--              <input type="button" value="submit" >-->
+              <button type="submit">view more</button>
+            </form>
           </div>
         </div>
       </div>
