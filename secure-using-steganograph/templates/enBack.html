@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			stegenography- {{ title }}
+		</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		
+		<script type='text/javascript'>
+			function preview_image(event) 
+			{
+			 var reader = new FileReader();
+			 reader.onload = function()
+			 {
+			  var output = document.getElementById('output_image');
+			  output.src = reader.result;
+			 }
+			 reader.readAsDataURL(event.target.files[0]);
+			}
+		</script>
+
+		<style>
+			img {
+    		width: 70%;
+    		}
+
+		</style>
+
+	</head>
+	<body>
+		<div class='container p-4'>
+			<div class='row'>
+				<div class='col-md-4'>
+				<form method='POST' action="" enctype="multipart/form-data" target='_blank'>
+				{{ form.hidden_tag() }}
+				<!-- upload file here -->
+		  		<div class="form-group">
+		  			{{ form.picture.label() }}
+		  			{{ form.picture(class='form-control-file',accept="image/*", onchange="preview_image(event)") }}
+		  			{% if form.picture.errors %}
+			  			{% for error in form.picture.errors %}
+			  				<span class='text-danger'>{{ error }}</span>
+			  			{% endfor %}
+		  			{% endif %}
+		    		<!-- <input type="file" class="custom-file-input" id="customFile">
+		    		<label class="custom-file-label" for="customFile">Choose file</label> -->
+		  		</div>
+		  		<!--  -->
+		  		<!-- text input here -->
+		  		<div class="form-group"><!-- 
+			    <label for="inputAddress2">Text:</label>
+			    <input type="text" class="form-control "> -->
+			    	{{ form.text.label() }}
+			    	{{ form.text(class='form-control', placeholder='text') }}
+			    	{% if form.text.errors %}
+			    		<div class="text-danger">
+				    		{% for error in form.text.errors %}
+				    			<span>{{ error }}</span>
+				    		{% endfor %}
+				    	</div>
+			    	{% endif %}
+			    <div>
+			    <br>
+			    {{ form.submit(class = 'btn btn-primary') }}
+      			<!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+    			</div>
+    			<!--  -->
+    			<br>
+				<div>
+					Password:
+				</div>
+			  	</div>
+				</form>
+				</div>
+				<!-- show image -->
+				<div class='col-md-8'>
+					<img class="img-thumbnail float-right" id="output_image"/>
+				</div>
+				<!-- src = "{{ url_for('static', filename='git.jpg') }}" -->
+			</div>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class='row'>
+		<div class='col-md-4'>
+			<p><b>Pixel length:</b> {{ pd_ret }}</p>
+		</div>
+
+		<div class='col-md-8'>
+			<p><b>Encoded image: </b> <a class="btn btn-outline-dark btn-sm" href="{{ url_for('static', filename = 'enc_pic/'+im_ret) }}" download>Download encoded image</a></p>
+			<img class='js-img border border-warning' src = "{{ url_for('static', filename = 'enc_pic/'+im_ret) }}">
+			
+		</div>
+	</div>
+{% endblock %}

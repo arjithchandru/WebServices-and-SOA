@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+	<title>Secure uisng Steganographic{{ title }}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type='text/javascript'>
+			function preview_image(event) 
+			{
+			 var reader = new FileReader();
+			 reader.onload = function()
+			 {
+			  var output = document.getElementById('output_image');
+			  output.src = reader.result;
+			 }
+			 reader.readAsDataURL(event.target.files[0]);
+			}
+			function preview_image_left(event) 
+			{
+			 var reader = new FileReader();
+			 reader.onload = function()
+			 {
+			  var output = document.getElementById('output_image_left');
+			  output.src = reader.result;
+			 }
+			 reader.readAsDataURL(event.target.files[0]);
+			}
+
+			function preview_image_right(event) 
+			{
+			 var reader = new FileReader();
+			 reader.onload = function()
+			 {
+			  var output = document.getElementById('output_image_right');
+			  output.src = reader.result;
+			 }
+			 reader.readAsDataURL(event.target.files[0]);
+			}
+		</script>
+	<style>
+		body{background-color: #e6e6e6;}
+
+			.js-img {width: 70%; }
+			.asd {width: 100%; }
+			.pip {width: 50%; }
+			.form-control:focus, .form-control-file:focus {
+				  border-color: #FFCC00;
+				  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 204, 0, 0.6);
+				}
+
+.bg-warning {
+    background-color: #0986d1 !important;
+}
+.btn-warning {
+    color: #212529;
+    background-color: #0774ff;
+    border-color: #075cff;
+}
+	    .foot {
+	       position: fixed;
+	       left: 0;
+	       bottom: 0;
+	       width: 100%;
+	       text-align: center;
+	       padding-bottom: 10px;
+
+	    }
+.btn-warning:hover {
+    color: #212529;
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
+	    .btn-warning:not(:disabled):not(.disabled).active, .btn-warning:not(:disabled):not(.disabled):active, .show > .btn-warning.dropdown-toggle {
+    color: #212529;
+    background-color: #14b40f;
+    border-color: #3b9a20;
+}
+	</style>
+</head>
+<body>
+	<header class="site-header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Secure uisng Steganographic</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <!-- <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+              <a class="nav-item nav-link" href="{{ url_for('home') }}">About</a> -->
+            </div>
+            <!-- Navbar Right Side -->
+<!--            <div class="navbar-nav">-->
+<!--              <a class="btn btn-outline-dark btn-sm m-1" href="{{ url_for('home') }}">Home</a>-->
+<!--              <a class="btn btn-outline-dark btn-sm m-1" href="{{ url_for('home') }}">About</a>-->
+<!--            </div>-->
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container p-4">
+		{% block content %}{% endblock %}
+	</div>
+
+
+	<div class="text-center foot p-2 bg-warning text-dark">
+		Git <a href='#' class='btn btn-outline-dark btn-sm'>Link</a>
+	</div>
+<!-- Footer -->
+</body>
+</html>

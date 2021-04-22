@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class='p-4'>
+		<div class='row'>
+			<div class='col-md-6'>
+				<a type="button" class="btn btn-warning btn-block float-right my-1" href="{{ url_for('encode') }}">Encode</a>
+			</div>
+			<div class='col-md-6'>
+				<a type="button" class="btn btn-warning btn-block float-left my-1" href= "{{ url_for('decode') }}">Decode</a>
+			</div>
+		</div>
+		<br>
+			<p>This web app embed your message into a png image, and makes your message undetectable for a normal human and for many machines!!!</p>
+			<p><strong>Things to keep in mind:</strong></p>
+			<p><strong>i)</strong> Please use it just in fun purpose. Don&#39;t make misuse of it!</p>
+			<p><strong>ii)</strong> Always use <em>.</em><strong><em>png</em></strong> images (other formats are not supported).</p>
+			<p><strong>iii)</strong> Try to avoid black image, it may misbehave. Try to use colorful image.</p>
+			<p><strong>steps to encode:</strong></p>
+			<p><strong>i)</strong> Go to encode, then upload your png image (the image where you want to hide your message). then put your message in the text bar and press submit</p>
+			<p><strong>ii)</strong> It will take you into a page where have to download the encoded png image copy the pixel length.</p>
+			<p><strong>iii)</strong> If you want your friend to get the hidden image, give them the original as well as the encoded image. Don&#39;t forget the pixel length! or it won&#39;t work.</p>
+			<p><strong>steps to decode:</strong></p>
+			<p><strong>i)</strong> First upload the original image and the encoded image. then input the correct pixel length and press submit.</p>
+			<p><strong>ii)</strong> voil&agrave;!!! here you have your &nbsp;hidden message!!!</p>
+		</p>
+	</div>
+{% endblock %}

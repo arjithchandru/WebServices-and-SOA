@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class='container'>
+		<form method="POST" action="" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+			<div class="form-group">
+				<div class='row'>
+					<div class='col-md-6'>
+						Upload original image:
+						<br>
+						<!-- <input type="file" class='form-control-file' accept="image/*" onchange="preview_image_left(event)"> -->
+						{{ form.picture_o(class='form-control-file',accept="image/*",onchange="preview_image_left(event)") }}
+						{% if form.picture_o.errors %}
+							{% for error in form.picture_o.errors %}
+								<span class="text-danger">{{ error }}</span>
+							{% endfor %}
+						{% endif %}
+		                <img id="output_image_left" class="js-img border border-warning">
+					</div>
+					<div class='col-md-6'>
+						Upload encoded image:
+						<br>
+						{{ form.picture_e(class='form-control-file',accept="image/*",onchange="preview_image_right(event)") }}
+						{% if form.picture_e.errors %}
+							{% for error in form.picture_e.errors %}
+								<span class="text-danger">{{ error }}</span>
+							{% endfor %}
+						{% endif %}
+						<!-- <input type="file" class='form-control-file' accept="image/*" onchange="preview_image_right(event)"><br> -->
+		                <img id="output_image_right" class="js-img border border-warning">
+					</div>
+				</div>
+				<br>
+				<br>
+				<!-- {{ form.pwd_d(class='form-control pip') }}{{ form.submit_d(class='btn btn-warning') }} -->
+				<div class="form-inline d-flex justify-content-center">
+					{{ form.pwd_d(class='form-control',type='password', placeholder='Pixel length') }}
+					&nbsp;&nbsp;{{ form.submit_d(class='btn btn-warning') }}<br>
+				</div>
+				{% if form.pwd_d.errors %}
+					{% for error in form.pwd_d.errors %}
+						<span class="text-danger"><p class="d-flex justify-content-center">{{ error }}</p></span>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</form>
+	</div>
+{% endblock %}

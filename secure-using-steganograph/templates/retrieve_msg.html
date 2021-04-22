@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block content %}
+	{% if message=='error' %}
+		<h3 style="color:red;">oops!!! You made a mistake for sure!! Check the images or the pixel length you have submitted :/ </h3>
+	{% else %}
+		<h3>Your hidden message:</h3><br>
+		<p>{{ message }}</p>
+	{%endif%}
+{% endblock %}

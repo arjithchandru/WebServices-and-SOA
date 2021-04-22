@@ -1,0 +1,2 @@
+ddtrace==0.14.0
+pymemcache==1.4.4
