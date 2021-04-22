@@ -235,19 +235,62 @@
       .center {
         text-align: center;
       }
+
+      #btn3 {
+        background: #222;
+        height: 40px;
+        min-width: 100px;
+        border: none;
+        border-radius: 10px;
+        color: #eee;
+        font-size: 20px;
+        font-family: "Cookie", cursive;
+        position: relative;
+        transition: 1s;
+        -webkit-tap-highlight-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding-top: 5px;
+      }
+
+      #btn3 #circle {
+        width: 5px;
+        height: 5px;
+        background: transparent;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        overflow: hidden;
+        transition: 500ms;
+      }
+
+      .noselect {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      
+
     </style>
   </head>
   <body>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">WebSiteName</a>
+          <a class="navbar-brand" href="#">Cinepolis</a>
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Page 1</a></li>
-          <li><a href="#">Page 2</a></li>
-          <li><a href="#">Page 3</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Updates</a></li>
+          <li><a href="#">Login</a></li>
         </ul>
       </div>
     </nav>
@@ -255,7 +298,9 @@
     <div class="center">
       <div class="outer">
         <div class="card">
-          <div class="poster"><img src="{{ url_for('static',filename='media/karnan1.jpg')}}" /></div>
+          <div class="poster">
+            <img src="{{ url_for('static',filename='media/karnan1.jpg')}}" />
+          </div>
           <div class="details">
             <h2>Karnan <br /><span>Directed by Mari Selvaraj</span></h2>
             <div class="rating">
@@ -275,22 +320,40 @@
             <div class="star">
               <h4>cast</h4>
               <ul>
-                <li><img src="static/img/tree.webp" alt="" /></li>
-
-                <li><img src="static/img/tree.webp" alt="" /></li>
+                <li>
+                  <img
+                    src="{{ url_for('static',filename='img/tree.webp')}}"
+                    alt=""
+                  />
+                </li>
 
                 <li>
-                  <img src="static/img/tree.webp" alt="" />
+                  <img
+                    src="{{ url_for('static',filename='img/tree.webp')}}"
+                    alt=""
+                  />
+                </li>
+
+                <li>
+                  <img
+                    src="{{ url_for('static',filename='img/tree.webp')}}"
+                    alt=""
+                  />
                 </li>
               </ul>
-            </div><br>
+            </div>
+            <br />
             <form method="post" action="/cinepolice/seating">
               <input type="hidden" name="moviename" value="karnan" />
               <input type="hidden" name="dirname" value="Mari Selvaraj" />
-              <input type="hidden" name="producername" value="Kalaipuli S Thanu" />
-              <input type="hidden" name="imageposter" value="karnan.jpg">
-<!--              <input type="button" value="submit" >-->
-              <button type="submit">view more</button>
+              <input
+                type="hidden"
+                name="producername"
+                value="Kalaipuli S Thanu"
+              />
+              <input type="hidden" name="imageposter" value="karnan.jpg" />
+              <!--              <input type="button" value="submit" >-->
+              <button id="btn3" type="submit">Watch Trailer</button>
             </form>
           </div>
         </div>
@@ -298,7 +361,9 @@
 
       <div class="outer">
         <div class="card">
-          <div class="poster"><img src="{{ url_for('static',filename='media/rocketry.jpg')}}" /></div>
+          <div class="poster">
+            <img src="{{ url_for('static',filename='media/rocketry.jpg')}}" />
+          </div>
           <div class="details">
             <h2>Rocketry <br /><span>Directed by Madhavan</span></h2>
             <div class="rating">
@@ -326,20 +391,27 @@
                   <img src="static/img/tree.webp" alt="" />
                 </li>
               </ul>
-            </div><br><br>
+            </div>
+            <br /><br />
             <form method="post" action="/cinepolice/seating">
               <input type="hidden" name="moviename" value="Rocketry" />
               <input type="hidden" name="dirname" value="Madhavan" />
-              <input type="hidden" name="producername" value="Tricolour Films" />
-<!--              <input type="button" value="submit" >-->
-              <button type="submit">view more</button>
+              <input
+                type="hidden"
+                name="producername"
+                value="Tricolour Films"
+              />
+              <!--              <input type="button" value="submit" >-->
+              <button id = "btn3" type="submit">Watch Trailer</button>
             </form>
           </div>
         </div>
       </div>
       <div class="outer">
         <div class="card">
-          <div class="poster"><img src="{{ url_for('static',filename='media/soorarai.jpg')}}" /></div>
+          <div class="poster">
+            <img src="{{ url_for('static',filename='media/soorarai.jpg')}}" />
+          </div>
           <div class="details">
             <h2>
               Soorarai Pottru <br /><span>Directed by Sudha kongara</span>
@@ -369,13 +441,18 @@
                   <img src="static/img/tree.webp" alt="" />
                 </li>
               </ul>
-            </div><br>
-                        <form method="post" action="/cinepolice/seating">
+            </div>
+            <br />
+            <form method="post" action="/cinepolice/seating">
               <input type="hidden" name="moviename" value="Soorarai Pottru" />
               <input type="hidden" name="dirname" value="Sudha kongara" />
-              <input type="hidden" name="producername" value="2D Entertinements" />
-<!--              <input type="button" value="submit" >-->
-              <button type="submit">view more</button>
+              <input
+                type="hidden"
+                name="producername"
+                value="2D Entertinements"
+              />
+              <!--              <input type="button" value="submit" >-->
+              <button id ="btn3" type="submit">Watch Trailer</button>
             </form>
           </div>
         </div>
