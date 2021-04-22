@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from forms import encodeForm, decodeForm
 import os
 from PIL import Image
+#from flask.ext.scss import Scss
 import secrets
 from alg_apply import original_text, enc_alg, dec_alg
 
