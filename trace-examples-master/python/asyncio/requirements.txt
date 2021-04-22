@@ -1,5 +1,0 @@
-# third party
-redis==2.10.5
-
-# tracer
-ddtrace==0.48.0

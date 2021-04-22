@@ -1,2 +1,0 @@
-ddtrace==0.15.0
-vertica-python==0.7.3

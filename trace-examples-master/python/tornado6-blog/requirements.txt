@@ -1,3 +1,0 @@
-aiopg==0.16.0
-tornado==6.0.3
-git+https://github.com/datadog/dd-trace-py@v0.29.0#egg=ddtrace

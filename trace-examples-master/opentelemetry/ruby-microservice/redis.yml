@@ -1,8 +1,0 @@
-default:
-  host: redis
-  port: 6379
-  db: 0
-development:
-  db: 0
-test:
-  db: 1

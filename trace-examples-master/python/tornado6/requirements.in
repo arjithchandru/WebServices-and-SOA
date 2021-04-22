@@ -1,6 +1,0 @@
-# application
-tornado==6.0.3
-redis
-
-# tracing
-git+https://github.com/datadog/dd-trace-py@v0.29.0#egg=ddtrace
