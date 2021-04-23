@@ -64,6 +64,7 @@ def dec_alg(o,e):
 		txt=''.join(decodedTxt)
 		rev=txt[:1]+'b'+txt[1:]
 		n = int(rev, 2)
+		print('bitlength',n.bit_length())
 		message = n.to_bytes((n.bit_length() + 7) // 8, 'big').decode()
 		return message
 	except:
