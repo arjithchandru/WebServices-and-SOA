@@ -7,8 +7,9 @@
 
 		<div class='col-md-8'>
 			<p><b>Encoded image: </b> <a class="btn btn-outline-dark btn-sm" href="{{ url_for('static', filename = 'enc_pic/'+im_ret) }}" download>Download encoded image</a></p>
-			<img class='js-img border border-warning' src = "{{ url_for('static', filename = 'enc_pic/'+im_ret) }}">
-			
+			<!--<img class='js-img border border-warning' src = "{{ url_for('static', filename = 'enc_pic/'+im_ret) }}">
+			-->
+			<h2>Image has been saved successfully!!!</h2>
 		</div>
 	</div>
 {% endblock %}

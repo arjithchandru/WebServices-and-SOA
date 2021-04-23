@@ -48,19 +48,7 @@ def encode_string(input_string,root="./tmp/"):
         secret_enc=lsb.hide(f_name,split_string_list[i])
         secret_enc.save(f_name)
         print("[INFO] frame {} holds {}".format(f_name,split_string_list[i]))
-def decode_string(video):
-    frame_extraction(video)
-    secret=[]
-    root="./tmp/"
-    for i in range(len(os.listdir(root))):
-        f_name="{}{}.png".format(root,i)
-        secret_dec=lsb.reveal(f_name)
-        if secret_dec == None:
-            break
-        secret.append(secret_dec)
-        
-    print(''.join([i for i in secret]))
-    clean_tmp()
+
 def clean_tmp(path="./tmp"):
     if os.path.exists(path):
         shutil.rmtree(path)
@@ -88,3 +76,30 @@ if __name__ == "__main__":
             decode_string(input("enter the name of video with extension"))
         else:
             break
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+def decode_string(video):
+    frame_extraction(video)
+    secret=[]
+    root="./tmp/"
+    for i in range(len(os.listdir(root))):
+        f_name="{}{}.png".format(root,i)
+        secret_dec=lsb.reveal(f_name)
+        if secret_dec == None:
+            break
+        secret.append(secret_dec)
+        
+    print(''.join([i for i in secret]))
+    clean_tmp()
+'''
