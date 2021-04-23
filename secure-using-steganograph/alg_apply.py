@@ -23,7 +23,9 @@ def enc_alg(im):
 			c=[int(i)]
 			c.append(0)
 			a.append(c)
+		# print('array', a)
 		flat_txt=np.array(a).flatten()
+
 		# print('password:',len(flat_txt))
 		zeros=np.zeros((len(flat_img)-len(flat_txt),),dtype=int)
 		encoded_txt=np.append(flat_txt,zeros)
