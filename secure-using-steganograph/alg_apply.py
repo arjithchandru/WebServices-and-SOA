@@ -54,6 +54,7 @@ def dec_alg(o,e):
 
 	try:
 		sub = np.subtract(flat_org_img[:length], flat_enc_img[:length])
+		print('np.substract',sub)
 		for i in range(length):
 			if i%2 == 0:
 				decodedTxt.append(str(sub[i]))
