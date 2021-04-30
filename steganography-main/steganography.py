@@ -1,11 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+from flask import Flask, render_template, redirect, url_for, request
 import click
 from PIL import Image
 
+app = Flask(__name__)
+@app.route('/')
+def home():
+	return render_template('img_enc.html')
+
 
 class Steganography(object):
+
+
+
+
 
     @staticmethod
     def __int_to_bin(rgb):
