@@ -55,6 +55,9 @@ def dec_alg(o,e):
 	flat_enc_img = enc_img.flatten()
 
 	try:
+
+		print("orgimg", flat_org_img[:length])
+		print("encimg", flat_enc_img[:length])
 		sub = np.subtract(flat_org_img[:length], flat_enc_img[:length])
 		print('np.substract',sub)
 		for i in range(length):
