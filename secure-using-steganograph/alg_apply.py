@@ -63,11 +63,17 @@ def dec_alg(o,e):
 		for i in range(length):
 			if i%2 == 0:
 				decodedTxt.append(str(sub[i]))
+				# print("decoded",decodedTxt)
 
 		txt=''.join(decodedTxt)
 		rev=txt[:1]+'b'+txt[1:]
+		print("rev", rev)
 		n = int(rev, 2)
-		print('bitlength',n.bit_length())
+		# print("n",n)
+		# print('bitlength',n.bit_length())
+		# print("(n.bit_length() + 7)",(n.bit_length() +7))
+		# # print(n.to_bytes(8,'big'))
+		# print("beforedecode", n.to_bytes((n.bit_length() + 7) // 8, 'big'))
 		message = n.to_bytes((n.bit_length() + 7) // 8, 'big').decode()
 		return message
 	except:
